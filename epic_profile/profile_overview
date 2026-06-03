@@ -1,0 +1,1089 @@
+[5154] epic_driver@127.0.0.1
+  void cuco::detail::initialize<(unsigned long)256, cuda::__4::atomic<unsigned int, (cuda::std::__4::__detail::thread_scope)1>, cuda::__4::atomic<unsigned int, (cuda::std::__4::__detail::thread_scope)1>, unsigned int, unsigned int, cuco::pair<cuda::__4::atomic<unsigned int, (cuda::std::__4::__detail::thread_scope)1>, cuda::__4::atomic<unsigned int, (cuda::std::__4::__detail::thread_scope)1>>>(T6 *, T4, T5, long) (19532, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       107.68
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>, thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>(T2, T3) (4883, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.58
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>, thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>(T2, T3) (4883, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.77
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__tabulate::functor<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::system::detail::generic::detail::compute_sequence_value<int, void>, long>, long>, thrust::cuda_cub::__tabulate::functor<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::system::detail::generic::detail::compute_sequence_value<int, void>, long>, long>(T2, T3) (4883, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.61
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__tabulate::functor<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::system::detail::generic::detail::compute_sequence_value<int, void>, long>, long>, thrust::cuda_cub::__tabulate::functor<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::system::detail::generic::detail::compute_sequence_value<int, void>, long>, long>(T2, T3) (4883, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.67
+    ---------------------- ----------- ------------
+
+  void cuco::detail::insert<(unsigned long)128, (unsigned int)4, thrust::zip_iterator<thrust::tuple<thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, cuda::__4::atomic<unsigned long, (cuda::std::__4::__detail::thread_scope)1>, cuco::static_map<unsigned int, unsigned int, (cuda::std::__4::__detail::thread_scope)1, cuco::cuda_allocator<char>>::device_mutable_view, cuco::detail::XXHash_32<unsigned int>, thrust::equal_to<unsigned int>>(T3, long, T4 *, T5, T6, T7) (78125, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       475.55
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>, thrust::cuda_cub::__uninitialized_fill::functor<thrust::device_ptr<unsigned int>, unsigned int>, unsigned long>(T2, T3) (4883, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        10.11
+    ---------------------- ----------- ------------
+
+  void cuco::detail::find<(unsigned long)128, (unsigned int)4, unsigned int, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, cuco::static_map<unsigned int, unsigned int, (cuda::std::__4::__detail::thread_scope)1, cuco::cuda_allocator<char>>::device_view, cuco::detail::XXHash_32<unsigned int>, thrust::equal_to<unsigned int>>(T4, long, T5, T6, T7, T8) (78125, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       296.54
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::zip_iterator<thrust::tuple<thrust::cuda_cub::transform_input_iterator_t<bool, thrust::cuda_cub::transform_pair_of_input_iterators_t<bool, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::equal_to<unsigned int>>, thrust::detail::unary_negate<thrust::cuda_cub::identity>>, thrust::cuda_cub::counting_iterator_t<long>, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T5 *, T3, cub::GridEvenShare<T3>, T4) (1024, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        13.54
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceSingleTileKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T3, T4, T5, T6) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         5.70
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>, thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.94
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>, thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         2.53
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::zip_iterator<thrust::tuple<thrust::cuda_cub::transform_input_iterator_t<bool, thrust::cuda_cub::transform_pair_of_input_iterators_t<bool, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::equal_to<unsigned int>>, thrust::detail::unary_negate<thrust::cuda_cub::identity>>, thrust::cuda_cub::counting_iterator_t<long>, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T5 *, T3, cub::GridEvenShare<T3>, T4) (1024, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        13.34
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceSingleTileKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T3, T4, T5, T6) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         5.89
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>, thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.03
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>, thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         2.53
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::zip_iterator<thrust::tuple<thrust::cuda_cub::transform_input_iterator_t<bool, thrust::cuda_cub::transform_pair_of_input_iterators_t<bool, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::detail::normal_iterator<thrust::device_ptr<unsigned int>>, thrust::equal_to<unsigned int>>, thrust::detail::unary_negate<thrust::cuda_cub::identity>>, thrust::cuda_cub::counting_iterator_t<long>, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T5 *, T3, cub::GridEvenShare<T3>, T4) (394, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         9.34
+    ---------------------- ----------- ------------
+
+  void cub::DeviceReduceSingleTileKernel<cub::DeviceReducePolicy<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>>::Policy600, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, int, thrust::cuda_cub::__find_if::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>>(T2, T3, T4, T5, T6) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         5.57
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>, thrust::cuda_cub::__uninitialized_copy::functor<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type> *, thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.97
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>, thrust::cuda_cub::for_each_f<thrust::pointer<thrust::tuple<bool, long, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type, thrust::null_type>, thrust::cuda_cub::tag, thrust::use_default, thrust::use_default>, thrust::detail::wrapped_function<thrust::detail::allocator_traits_detail::gozer, void>>, long>(T2, T3) (1, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         2.53
+    ---------------------- ----------- ------------
+
+  void thrust::cuda_cub::core::_kernel_agent<thrust::cuda_cub::__parallel_for::ParallelForAgent<thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<unsigned int>, thrust::system::detail::generic::detail::compute_sequence_value<unsigned long, void>, long>, long>, thrust::cuda_cub::__tabulate::functor<thrust::device_ptr<unsigned int>, thrust::system::detail::generic::detail::compute_sequence_value<unsigned long, void>, long>, long>(T2, T3) (19532, 1, 1)x(256, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.14
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642122prepareYcsbIndexKernelENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.98
+    ---------------------- ----------- ------------
+
+  void cub::DeviceCompactInitKernel<cub::ScanTileState<int, (bool)1>, unsigned int *>(T1, int, T2) (7, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.14
+    ---------------------- ----------- ------------
+
+  _ZN3cub23DeviceSelectSweepKernelINS_16DispatchSelectIfIPjPNS_8NullTypeES2_S2_ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642116YcsbGpuIndexImpl9indexTxnsERNS5_8TxnArrayINS6_7YcsbTxnEEERNS9_INS6_12YcsbTxnParamEEEjEUljE_S3_iLb0ELb0EE18PtxSelectIfPolicyTES2_S4_S2_S2_NS_13ScanTileStateIiLb1EEESG_S3_iLb0EEEvT0_T1_T2_T3_T4_T5_T6_T7_i (782, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        17.44
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642115indexYcsbKernelENS_11GpuTxnArrayES2_N4cuco10static_mapIjjLN4cuda3std3__48__detail12thread_scopeE1ENS3_14cuda_allocatorIcEEE11device_viewEj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       161.02
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603320prepareSubmitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        12.54
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (1, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         2.98
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanKernel<cub::DeviceScanPolicy<unsigned int>::Policy600, unsigned int *, unsigned int *, cub::ScanTileState<unsigned int, (bool)1>, cub::Sum, cub::NullType, int, unsigned int>(T2, T3, T4, int, T5, T6, T7) (53, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.70
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603313submitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjPmj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        90.50
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortHistogramKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, unsigned int>(T4 *, const T3 *, T4, int, int) (540, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        19.30
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortExclusiveSumKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, unsigned int>(T2 *) (4, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.22
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        46.50
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        45.41
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        41.98
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        34.56
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, unsigned long *>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.51
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIPmjE9Policy520ES2_NS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES2_lEEPjNS_24ReduceByKeyScanTileStateIjiLb1EEENS7_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.59
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, epic::ReverseIterator<unsigned long, unsigned long *, long>>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.51
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIN4epic15ReverseIteratorImPmlEEjE9Policy520ES5_NS3_IjNS_22TransformInputIteratorIjNS2_63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES4_lEElEENS3_IjPjlEENS_24ReduceByKeyScanTileStateIjiLb1EEENS9_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        27.10
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017calcOperationTypeIPmPjS3_PNS_10OperationTEEEvT_T0_T1_T2_m (5861, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        25.92
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (7, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.14
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub16DeviceScanKernelINS_16DeviceScanPolicyIjE9Policy600ENS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602021VersionWriteExtractorEPNS5_10OperationTElEEPjNS_13ScanTileStateIjLb1EEENS_3SumENS_6detail10InputValueIjSB_EEijEEvT0_T1_T2_iT3_T4_T5_ (782, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        16.48
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017scatterRWLocationINS_11GpuTxnArrayEEEvPmPNS_10OperationTEPjT_j (5861, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       140.16
+    ---------------------- ----------- ------------
+
+  __nv_static_42__3802b412_20_ycsb_gpu_executor_cu_30a9e4f5__ZN4epic4ycsb53_GLOBAL__N__3802b412_20_ycsb_gpu_executor_cu_30a9e4f529gpuNoSplitPiecewiseExecKernelENS0_10YcsbConfigEPvS3_NS_11GpuTxnArrayES4_jj (250000, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     msecond        61.12
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642122prepareYcsbIndexKernelENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.73
+    ---------------------- ----------- ------------
+
+  void cub::DeviceCompactInitKernel<cub::ScanTileState<int, (bool)1>, unsigned int *>(T1, int, T2) (7, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.10
+    ---------------------- ----------- ------------
+
+  _ZN3cub23DeviceSelectSweepKernelINS_16DispatchSelectIfIPjPNS_8NullTypeES2_S2_ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642116YcsbGpuIndexImpl9indexTxnsERNS5_8TxnArrayINS6_7YcsbTxnEEERNS9_INS6_12YcsbTxnParamEEEjEUljE_S3_iLb0ELb0EE18PtxSelectIfPolicyTES2_S4_S2_S2_NS_13ScanTileStateIiLb1EEESG_S3_iLb0EEEvT0_T1_T2_T3_T4_T5_T6_T7_i (782, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        19.26
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642115indexYcsbKernelENS_11GpuTxnArrayES2_N4cuco10static_mapIjjLN4cuda3std3__48__detail12thread_scopeE1ENS3_14cuda_allocatorIcEEE11device_viewEj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       156.48
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603320prepareSubmitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        12.64
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (1, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.01
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanKernel<cub::DeviceScanPolicy<unsigned int>::Policy600, unsigned int *, unsigned int *, cub::ScanTileState<unsigned int, (bool)1>, cub::Sum, cub::NullType, int, unsigned int>(T2, T3, T4, int, T5, T6, T7) (53, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.48
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603313submitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjPmj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        92.42
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortHistogramKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, unsigned int>(T4 *, const T3 *, T4, int, int) (540, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        19.10
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortExclusiveSumKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, unsigned int>(T2 *) (4, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.19
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        46.18
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        44.70
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        42.02
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        34.14
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, unsigned long *>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.54
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIPmjE9Policy520ES2_NS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES2_lEEPjNS_24ReduceByKeyScanTileStateIjiLb1EEENS7_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (651, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        28.26
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, epic::ReverseIterator<unsigned long, unsigned long *, long>>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.48
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIN4epic15ReverseIteratorImPmlEEjE9Policy520ES5_NS3_IjNS_22TransformInputIteratorIjNS2_63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES4_lEElEENS3_IjPjlEENS_24ReduceByKeyScanTileStateIjiLb1EEENS9_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (651, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.88
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017calcOperationTypeIPmPjS3_PNS_10OperationTEEEvT_T0_T1_T2_m (5857, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        25.79
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (7, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.26
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub16DeviceScanKernelINS_16DeviceScanPolicyIjE9Policy600ENS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602021VersionWriteExtractorEPNS5_10OperationTElEEPjNS_13ScanTileStateIjLb1EEENS_3SumENS_6detail10InputValueIjSB_EEijEEvT0_T1_T2_iT3_T4_T5_ (781, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        16.54
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017scatterRWLocationINS_11GpuTxnArrayEEEvPmPNS_10OperationTEPjT_j (5857, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       139.49
+    ---------------------- ----------- ------------
+
+  __nv_static_42__3802b412_20_ycsb_gpu_executor_cu_30a9e4f5__ZN4epic4ycsb53_GLOBAL__N__3802b412_20_ycsb_gpu_executor_cu_30a9e4f529gpuNoSplitPiecewiseExecKernelENS0_10YcsbConfigEPvS3_NS_11GpuTxnArrayES4_jj (250000, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     msecond        61.12
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642122prepareYcsbIndexKernelENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.60
+    ---------------------- ----------- ------------
+
+  void cub::DeviceCompactInitKernel<cub::ScanTileState<int, (bool)1>, unsigned int *>(T1, int, T2) (7, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.10
+    ---------------------- ----------- ------------
+
+  _ZN3cub23DeviceSelectSweepKernelINS_16DispatchSelectIfIPjPNS_8NullTypeES2_S2_ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642116YcsbGpuIndexImpl9indexTxnsERNS5_8TxnArrayINS6_7YcsbTxnEEERNS9_INS6_12YcsbTxnParamEEEjEUljE_S3_iLb0ELb0EE18PtxSelectIfPolicyTES2_S4_S2_S2_NS_13ScanTileStateIiLb1EEESG_S3_iLb0EEEvT0_T1_T2_T3_T4_T5_T6_T7_i (782, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       106.82
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642115indexYcsbKernelENS_11GpuTxnArrayES2_N4cuco10static_mapIjjLN4cuda3std3__48__detail12thread_scopeE1ENS3_14cuda_allocatorIcEEE11device_viewEj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       159.94
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603320prepareSubmitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        12.42
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (1, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.01
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanKernel<cub::DeviceScanPolicy<unsigned int>::Policy600, unsigned int *, unsigned int *, cub::ScanTileState<unsigned int, (bool)1>, cub::Sum, cub::NullType, int, unsigned int>(T2, T3, T4, int, T5, T6, T7) (53, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.74
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603313submitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjPmj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        91.87
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortHistogramKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, unsigned int>(T4 *, const T3 *, T4, int, int) (540, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        18.69
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortExclusiveSumKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, unsigned int>(T2 *) (4, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.29
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        47.78
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        45.98
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        41.92
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        35.04
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, unsigned long *>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.42
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIPmjE9Policy520ES2_NS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES2_lEEPjNS_24ReduceByKeyScanTileStateIjiLb1EEENS7_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        33.73
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, epic::ReverseIterator<unsigned long, unsigned long *, long>>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.48
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIN4epic15ReverseIteratorImPmlEEjE9Policy520ES5_NS3_IjNS_22TransformInputIteratorIjNS2_63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES4_lEElEENS3_IjPjlEENS_24ReduceByKeyScanTileStateIjiLb1EEENS9_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.92
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017calcOperationTypeIPmPjS3_PNS_10OperationTEEEvT_T0_T1_T2_m (5860, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        25.92
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (7, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.26
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub16DeviceScanKernelINS_16DeviceScanPolicyIjE9Policy600ENS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602021VersionWriteExtractorEPNS5_10OperationTElEEPjNS_13ScanTileStateIjLb1EEENS_3SumENS_6detail10InputValueIjSB_EEijEEvT0_T1_T2_iT3_T4_T5_ (782, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        18.30
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017scatterRWLocationINS_11GpuTxnArrayEEEvPmPNS_10OperationTEPjT_j (5860, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       138.43
+    ---------------------- ----------- ------------
+
+  __nv_static_42__3802b412_20_ycsb_gpu_executor_cu_30a9e4f5__ZN4epic4ycsb53_GLOBAL__N__3802b412_20_ycsb_gpu_executor_cu_30a9e4f529gpuNoSplitPiecewiseExecKernelENS0_10YcsbConfigEPvS3_NS_11GpuTxnArrayES4_jj (250000, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     msecond        60.79
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642122prepareYcsbIndexKernelENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.98
+    ---------------------- ----------- ------------
+
+  void cub::DeviceCompactInitKernel<cub::ScanTileState<int, (bool)1>, unsigned int *>(T1, int, T2) (7, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.14
+    ---------------------- ----------- ------------
+
+  _ZN3cub23DeviceSelectSweepKernelINS_16DispatchSelectIfIPjPNS_8NullTypeES2_S2_ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642116YcsbGpuIndexImpl9indexTxnsERNS5_8TxnArrayINS6_7YcsbTxnEEERNS9_INS6_12YcsbTxnParamEEEjEUljE_S3_iLb0ELb0EE18PtxSelectIfPolicyTES2_S4_S2_S2_NS_13ScanTileStateIiLb1EEESG_S3_iLb0EEEvT0_T1_T2_T3_T4_T5_T6_T7_i (782, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        94.56
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642115indexYcsbKernelENS_11GpuTxnArrayES2_N4cuco10static_mapIjjLN4cuda3std3__48__detail12thread_scopeE1ENS3_14cuda_allocatorIcEEE11device_viewEj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       159.01
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603320prepareSubmitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        12.06
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (1, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.04
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanKernel<cub::DeviceScanPolicy<unsigned int>::Policy600, unsigned int *, unsigned int *, cub::ScanTileState<unsigned int, (bool)1>, cub::Sum, cub::NullType, int, unsigned int>(T2, T3, T4, int, T5, T6, T7) (53, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.61
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603313submitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjPmj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        87.87
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortHistogramKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, unsigned int>(T4 *, const T3 *, T4, int, int) (540, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        19.52
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortExclusiveSumKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, unsigned int>(T2 *) (4, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.29
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        46.59
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        45.54
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        42.43
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        34.94
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, unsigned long *>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.54
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIPmjE9Policy520ES2_NS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES2_lEEPjNS_24ReduceByKeyScanTileStateIjiLb1EEENS7_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.56
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, epic::ReverseIterator<unsigned long, unsigned long *, long>>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.64
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIN4epic15ReverseIteratorImPmlEEjE9Policy520ES5_NS3_IjNS_22TransformInputIteratorIjNS2_63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES4_lEElEENS3_IjPjlEENS_24ReduceByKeyScanTileStateIjiLb1EEENS9_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.21
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017calcOperationTypeIPmPjS3_PNS_10OperationTEEEvT_T0_T1_T2_m (5862, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        25.95
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (7, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.14
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub16DeviceScanKernelINS_16DeviceScanPolicyIjE9Policy600ENS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602021VersionWriteExtractorEPNS5_10OperationTElEEPjNS_13ScanTileStateIjLb1EEENS_3SumENS_6detail10InputValueIjSB_EEijEEvT0_T1_T2_iT3_T4_T5_ (782, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        16.58
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017scatterRWLocationINS_11GpuTxnArrayEEEvPmPNS_10OperationTEPjT_j (5862, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       140.16
+    ---------------------- ----------- ------------
+
+  __nv_static_42__3802b412_20_ycsb_gpu_executor_cu_30a9e4f5__ZN4epic4ycsb53_GLOBAL__N__3802b412_20_ycsb_gpu_executor_cu_30a9e4f529gpuNoSplitPiecewiseExecKernelENS0_10YcsbConfigEPvS3_NS_11GpuTxnArrayES4_jj (250000, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     msecond        60.33
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642122prepareYcsbIndexKernelENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        29.82
+    ---------------------- ----------- ------------
+
+  void cub::DeviceCompactInitKernel<cub::ScanTileState<int, (bool)1>, unsigned int *>(T1, int, T2) (7, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.23
+    ---------------------- ----------- ------------
+
+  _ZN3cub23DeviceSelectSweepKernelINS_16DispatchSelectIfIPjPNS_8NullTypeES2_S2_ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642116YcsbGpuIndexImpl9indexTxnsERNS5_8TxnArrayINS6_7YcsbTxnEEERNS9_INS6_12YcsbTxnParamEEEjEUljE_S3_iLb0ELb0EE18PtxSelectIfPolicyTES2_S4_S2_S2_NS_13ScanTileStateIiLb1EEESG_S3_iLb0EEEvT0_T1_T2_T3_T4_T5_T6_T7_i (782, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        18.11
+    ---------------------- ----------- ------------
+
+  __nv_static_45__e834a725_17_ycsb_gpu_index_cu_d4509cf0_16421__ZN4epic4ycsb56_GLOBAL__N__e834a725_17_ycsb_gpu_index_cu_d4509cf0_1642115indexYcsbKernelENS_11GpuTxnArrayES2_N4cuco10static_mapIjjLN4cuda3std3__48__detail12thread_scopeE1ENS3_14cuda_allocatorIcEEE11device_viewEj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       158.30
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603320prepareSubmitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        12.54
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (1, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.07
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanKernel<cub::DeviceScanPolicy<unsigned int>::Policy600, unsigned int *, unsigned int *, cub::ScanTileState<unsigned int, (bool)1>, cub::Sum, cub::NullType, int, unsigned int>(T2, T3, T4, int, T5, T6, T7) (53, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         8.32
+    ---------------------- ----------- ------------
+
+  __nv_static_49__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_16033__ZN4epic4ycsb60_GLOBAL__N__76875ac2_21_ycsb_gpu_submitter_cu_d4509cf0_1603313submitYcsbTxnENS0_10YcsbConfigENS_11GpuTxnArrayEPjPmj (196, 1, 1)x(512, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        92.06
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortHistogramKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, unsigned int>(T4 *, const T3 *, T4, int, int) (540, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        19.14
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortExclusiveSumKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, unsigned int>(T2 *) (4, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.19
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        45.79
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        44.74
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        42.02
+    ---------------------- ----------- ------------
+
+  void cub::DeviceRadixSortOnesweepKernel<cub::DeviceRadixSortPolicy<unsigned long, cub::NullType, unsigned int>::Policy800, (bool)0, unsigned long, cub::NullType, unsigned int, int, int>(T7 *, T7 *, T5 *, const T5 *, T3 *, const T3 *, T4 *, const T4 *, T6, int, int) (391, 1, 1)x(384, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        34.24
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, unsigned long *>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.61
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIPmjE9Policy520ES2_NS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES2_lEEPjNS_24ReduceByKeyScanTileStateIjiLb1EEENS7_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.94
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanByKeyInitKernel<cub::ReduceByKeyScanTileState<unsigned int, int, (bool)1>, epic::ReverseIterator<unsigned long, unsigned long *, long>>(T1, T2, std::iterator_traits<T2>::value_type *, unsigned int, int) (6, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         4.45
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub21DeviceScanByKeyKernelINS_21DeviceScanByKeyPolicyIN4epic15ReverseIteratorImPmlEEjE9Policy520ES5_NS3_IjNS_22TransformInputIteratorIjNS2_63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602014WriteExtractorES4_lEElEENS3_IjPjlEENS_24ReduceByKeyScanTileStateIjiLb1EEENS9_7SameRowENS_3SumEjijmEEvT0_PT9_T1_T2_T3_iT4_T5_T6_T7_ (652, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        26.69
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017calcOperationTypeIPmPjS3_PNS_10OperationTEEEvT_T0_T1_T2_m (5863, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        25.79
+    ---------------------- ----------- ------------
+
+  void cub::DeviceScanInitKernel<cub::ScanTileState<unsigned int, (bool)1>>(T1, int) (7, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond         3.14
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN3cub16DeviceScanKernelINS_16DeviceScanPolicyIjE9Policy600ENS_22TransformInputIteratorIjN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602021VersionWriteExtractorEPNS5_10OperationTElEEPjNS_13ScanTileStateIjLb1EEENS_3SumENS_6detail10InputValueIjSB_EEijEEvT0_T1_T2_iT3_T4_T5_ (782, 1, 1)x(128, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond        16.61
+    ---------------------- ----------- ------------
+
+  __nv_static_52__4ec83d11_24_gpu_execution_planner_cu_541eee58_16020__ZN4epic63_GLOBAL__N__4ec83d11_24_gpu_execution_planner_cu_541eee58_1602017scatterRWLocationINS_11GpuTxnArrayEEEvPmPNS_10OperationTEPjT_j (5863, 1, 1)x(256, 1, 1), Context 1, Stream 17, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     usecond       139.04
+    ---------------------- ----------- ------------
+
+  __nv_static_42__3802b412_20_ycsb_gpu_executor_cu_30a9e4f5__ZN4epic4ycsb53_GLOBAL__N__3802b412_20_ycsb_gpu_executor_cu_30a9e4f529gpuNoSplitPiecewiseExecKernelENS0_10YcsbConfigEPvS3_NS_11GpuTxnArrayES4_jj (250000, 1, 1)x(128, 1, 1), Context 1, Stream 7, Device 0, CC 8.0
+    Section: Command line profiler metrics
+    ---------------------- ----------- ------------
+    Metric Name            Metric Unit Metric Value
+    ---------------------- ----------- ------------
+    gpu__time_duration.sum     msecond        60.70
+    ---------------------- ----------- ------------
+
