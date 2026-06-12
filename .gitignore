@@ -34,3 +34,8 @@
 # CLion Temporary Files
 .idea/*
 cmake-*/*
+
+# output
+build/
+epic_output/
+epic_profile/*
