@@ -35,7 +35,12 @@
 .idea/*
 cmake-*/*
 
-# output
+# build
 build/
+
+# output
 epic_output/
-epic_profile/*
+epic_profile/
+
+# temp files
+terminal
