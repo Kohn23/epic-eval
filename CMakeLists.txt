@@ -95,7 +95,7 @@ if (CUDA_FOUND)
 endif()
 add_library(epic STATIC ${EPIC_SOURCE})
 if (CUDA_FOUND)
-    set_property(TARGET epic PROPERTY CUDA_ARCHITECTURES 86)
+    set_property(TARGET epic PROPERTY CUDA_ARCHITECTURES 70)
 endif ()
 target_link_libraries(epic ${JEMALLOC_LIBRARIES})
 
@@ -104,7 +104,7 @@ target_link_libraries(epic_driver epic)
 target_link_libraries(epic_driver ${JEMALLOC_LIBRARIES})
 
 add_executable(micro_driver micro_driver.cu)
-set_property(TARGET micro_driver PROPERTY CUDA_ARCHITECTURES 86)
+set_property(TARGET micro_driver PROPERTY CUDA_ARCHITECTURES 70)
 target_link_libraries(micro_driver epic)
 target_link_libraries(micro_driver ${JEMALLOC_LIBRARIES})
 
