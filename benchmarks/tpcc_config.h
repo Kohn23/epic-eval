@@ -39,6 +39,7 @@ struct TpccConfig
     bool gacco_use_atomic = false;
     bool gacco_tpcc_stock_use_atomic = true;
     uint32_t cpu_exec_num_threads = 1;
+    bool enable_txn_scheduler = false;
 
     size_t warehouseTableSize() const
     {

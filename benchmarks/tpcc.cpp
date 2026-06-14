@@ -22,6 +22,7 @@
 #include <benchmarks/tpcc_txn_gen.h>
 #include <benchmarks/tpcc_gpu_index.h>
 #include <benchmarks/tpcc_cpu_executor.h>
+#include <benchmarks/tpcc_txn_scheduler.h>
 
 namespace epic::tpcc {
 TpccTxnMix::TpccTxnMix(
@@ -324,6 +325,18 @@ void TpccDb::generateTxns()
             uint32_t timestamp = epoch * config.num_txns + i;
             generator.generateTxn(txn_type, txn, timestamp);
 #endif
+        }
+
+        /* Apply txn scheduler to group similar-cost txns together (opt-in) */
+        if (config.enable_txn_scheduler)
+        {
+            auto sched_start = std::chrono::high_resolution_clock::now();
+
+            scheduleTpccTxns(txn_input_array, config);
+
+            auto sched_end = std::chrono::high_resolution_clock::now();
+            logger.Info("Epoch {} txn scheduling time: {} us", epoch,
+                std::chrono::duration_cast<std::chrono::microseconds>(sched_end - sched_start).count());
         }
     }
 }

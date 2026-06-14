@@ -24,9 +24,10 @@ static constexpr struct option long_options[] = {{"benchmark", required_argument
     {"num_txns", required_argument, nullptr, 's'}, {"split_fields", required_argument, nullptr, 'f'},
     {"commutative_ops", required_argument, nullptr, 'm'}, {"num_records", required_argument, nullptr, 'n'},
     {"exec_device", required_argument, nullptr, 'x'},
+    {"txn_scheduler", required_argument, nullptr, 't'},
     {nullptr, 0, nullptr, 0}};
 
-static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:";
+static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:t:";
 
 int main(int argc, char **argv)
 {
@@ -204,6 +205,20 @@ int main(int argc, char **argv)
             else
             {
                 throw std::runtime_error("Invalid execution device");
+            }
+            break;
+        case 't':
+            if (std::string(optarg) == "true")
+            {
+                tpcc_config.enable_txn_scheduler = true;
+            }
+            else if (std::string(optarg) == "false")
+            {
+                tpcc_config.enable_txn_scheduler = false;
+            }
+            else
+            {
+                throw std::runtime_error("Invalid txn scheduler flag");
             }
             break;
         default:

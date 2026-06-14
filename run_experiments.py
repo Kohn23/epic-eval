@@ -18,11 +18,14 @@ num_repeat = 3
 epic_driver_path = "./build/epic_driver"
 epic_micro_driver_path = "./build/micro_driver"
 output_path = "./epic_output"
-cmd_template = "{} -b {} -d {} -w {} -a {} -r {} -c {} -e {} -s {} -f {} -m {} -n {} -x {}"
-output_file_template = "output__b{}__d{}__w{}__a{}__r{}__c{}__e{}__s{}__f{}__m{}__n{}__x{}__r{}.txt"
+cmd_template = "{} -b {} -d {} -w {} -a {} -r {} -c {} -e {} -s {} -f {} -m {} -n {} -x {} -t {}"
+output_file_template = "output__b{}__d{}__w{}__a{}__r{}__c{}__e{}__s{}__f{}__m{}__n{}__x{}__t{}__r{}.txt"
 
-micro_cmd_template = "{} -b {} -d {} -w {} -a {} -r {} -c {} -e {} -s {} -f {} -m {} -n {} -x {} -p {}"
-micro_output_file_template = "output__b{}__d{}__w{}__a{}__r{}__c{}__e{}__s{}__f{}__m{}__n{}__x{}__p{}__r{}.txt"
+micro_cmd_template = "{} -b {} -d {} -w {} -a {} -r {} -c {} -e {} -s {} -f {} -m {} -n {} -x {} -p {} -t {}"
+micro_output_file_template = "output__b{}__d{}__w{}__a{}__r{}__c{}__e{}__s{}__f{}__m{}__n{}__x{}__p{}__t{}__r{}.txt"
+
+
+enable_txn_scheduler = "false"
 
 
 def print_experiment_count():
@@ -43,14 +46,14 @@ def epic_ycsb_experiment():
                     print_experiment_count()
                     cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                               fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                              commutative_ops, num_records, exec_device)
+                                              commutative_ops, num_records, exec_device, enable_txn_scheduler)
                     print(cmd)
                     command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                     print(command_output.stdout)
                     output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                                   fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                                   split_fields, commutative_ops, num_records,
-                                                                  exec_device, repeat)
+                                                                  exec_device, enable_txn_scheduler, repeat)
                     output_filepath = os.path.join(output_path, output_filename)
                     with open(output_filepath, "w") as output_file:
                         output_file.write(command_output.stdout)
@@ -65,14 +68,14 @@ def epic_tpcc_experiment():
             print_experiment_count()
             cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                       fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                      commutative_ops, num_records, exec_device)
+                                      commutative_ops, num_records, exec_device, enable_txn_scheduler)
             print(cmd)
             command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
             print(command_output.stdout)
             output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                           fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                           split_fields, commutative_ops, num_records,
-                                                          exec_device, repeat)
+                                                          exec_device, enable_txn_scheduler, repeat)
             output_filepath = os.path.join(output_path, output_filename)
             with open(output_filepath, "w") as output_file:
                 output_file.write(command_output.stdout)
@@ -86,14 +89,14 @@ def epic_tpcc_full_experiment():
             print_experiment_count()
             cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                       fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                      commutative_ops, num_records, exec_device)
+                                      commutative_ops, num_records, exec_device, enable_txn_scheduler)
             print(cmd)
             command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
             print(command_output.stdout)
             output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                           fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                           split_fields, commutative_ops, num_records,
-                                                          exec_device, repeat)
+                                                          exec_device, enable_txn_scheduler, repeat)
             output_filepath = os.path.join(output_path, output_filename)
             with open(output_filepath, "w") as output_file:
                 output_file.write(command_output.stdout)
@@ -109,14 +112,14 @@ def gacco_ycsb_experiment():
                 print_experiment_count()
                 cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                           fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                          commutative_ops, num_records, exec_device)
+                                          commutative_ops, num_records, exec_device, enable_txn_scheduler)
                 print(cmd)
                 command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                 print(command_output.stdout)
                 output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                               fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                               split_fields, commutative_ops, num_records,
-                                                              exec_device, repeat)
+                                                              exec_device, enable_txn_scheduler, repeat)
                 output_filepath = os.path.join(output_path, output_filename)
                 with open(output_filepath, "w") as output_file:
                     output_file.write(command_output.stdout)
@@ -133,14 +136,14 @@ def gacco_tpcc_experiment():
                     print_experiment_count()
                     cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                               fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                              commutative_ops, num_records, exec_device)
+                                              commutative_ops, num_records, exec_device, enable_txn_scheduler)
                     print(cmd)
                     command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                     print(command_output.stdout)
                     output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                                   fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                                   split_fields, commutative_ops, num_records,
-                                                                  exec_device, repeat)
+                                                                  exec_device, enable_txn_scheduler, repeat)
                     output_filepath = os.path.join(output_path, output_filename)
                     with open(output_filepath, "w") as output_file:
                         output_file.write(command_output.stdout)
@@ -156,14 +159,14 @@ def epic_cpu_tpcc_experiment():
             print_experiment_count()
             cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                       fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                      commutative_ops, num_records, exec_device)
+                                      commutative_ops, num_records, exec_device, enable_txn_scheduler)
             print(cmd)
             command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
             print(command_output.stdout)
             output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                           fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                           split_fields, commutative_ops, num_records,
-                                                          exec_device, repeat)
+                                                          exec_device, enable_txn_scheduler, repeat)
             output_filepath = os.path.join(output_path, output_filename)
             with open(output_filepath, "w") as output_file:
                 output_file.write(command_output.stdout)
@@ -179,14 +182,14 @@ def epic_cpu_tpcc_full_experiment():
             print_experiment_count()
             cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                       fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                      commutative_ops, num_records, exec_device)
+                                      commutative_ops, num_records, exec_device, enable_txn_scheduler)
             print(cmd)
             command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
             print(command_output.stdout)
             output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                           fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                           split_fields, commutative_ops, num_records,
-                                                          exec_device, repeat)
+                                                          exec_device, enable_txn_scheduler, repeat)
             output_filepath = os.path.join(output_path, output_filename)
             with open(output_filepath, "w") as output_file:
                 output_file.write(command_output.stdout)
@@ -203,14 +206,14 @@ def epic_cpu_ycsb_experiment():
                 print_experiment_count()
                 cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                           fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                          commutative_ops, num_records, exec_device)
+                                          commutative_ops, num_records, exec_device, enable_txn_scheduler)
                 print(cmd)
                 command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                 print(command_output.stdout)
                 output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                               fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                               split_fields, commutative_ops, num_records,
-                                                              exec_device, repeat)
+                                                              exec_device, enable_txn_scheduler, repeat)
                 output_filepath = os.path.join(output_path, output_filename)
                 with open(output_filepath, "w") as output_file:
                     output_file.write(command_output.stdout)
@@ -231,14 +234,14 @@ def epic_ycsb_epoch_size_experiment():
                 print_experiment_count()
                 cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                           fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                          commutative_ops, num_records, exec_device)
+                                          commutative_ops, num_records, exec_device, enable_txn_scheduler)
                 print(cmd)
                 command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                 print(command_output.stdout)
                 output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                               fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                               split_fields, commutative_ops, num_records,
-                                                              exec_device, repeat)
+                                                              exec_device, enable_txn_scheduler, repeat)
                 output_filepath = os.path.join(output_path, output_filename)
                 with open(output_filepath, "w") as output_file:
                     output_file.write(command_output.stdout)
@@ -257,14 +260,14 @@ def epic_tpcc_epoch_size_experiment():
                 print_experiment_count()
                 cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                           fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                          commutative_ops, num_records, exec_device)
+                                          commutative_ops, num_records, exec_device, enable_txn_scheduler)
                 print(cmd)
                 command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                 print(command_output.stdout)
                 output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                               fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                               split_fields, commutative_ops, num_records,
-                                                              exec_device, repeat)
+                                                              exec_device, enable_txn_scheduler, repeat)
                 output_filepath = os.path.join(output_path, output_filename)
                 with open(output_filepath, "w") as output_file:
                     output_file.write(command_output.stdout)
@@ -277,14 +280,14 @@ def epic_microbenchmark():
         for repeat in range(0, num_repeat):
             cmd = micro_cmd_template.format(epic_micro_driver_path, benchmark, database, num_warehouses, skew_factor,
                                             fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                            commutative_ops, num_records, exec_device, abort_rate)
+                                            commutative_ops, num_records, exec_device, enable_txn_scheduler, abort_rate)
             print(cmd)
             command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
             print(command_output.stdout)
             output_filename = micro_output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                                 fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                                 split_fields, commutative_ops, num_records,
-                                                                exec_device, abort_rate, repeat)
+                                                                exec_device, enable_txn_scheduler, abort_rate, repeat)
             output_filepath = os.path.join(output_path, output_filename)
             with open(output_filepath, "w") as output_file:
                 output_file.write(command_output.stdout)
@@ -302,14 +305,14 @@ def gacco_tpcc_epoch_size_experiment():
                     print_experiment_count()
                     cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                               fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                              commutative_ops, num_records, exec_device)
+                                              commutative_ops, num_records, exec_device, enable_txn_scheduler)
                     print(cmd)
                     command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                     print(command_output.stdout)
                     output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                                   fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                                   split_fields, commutative_ops, num_records,
-                                                                  exec_device, repeat)
+                                                                  exec_device, enable_txn_scheduler, repeat)
                     output_filepath = os.path.join(output_path, output_filename)
                     with open(output_filepath, "w") as output_file:
                         output_file.write(command_output.stdout)
@@ -329,14 +332,14 @@ def gacco_ycsb_epoch_size_experiment():
                 print_experiment_count()
                 cmd = cmd_template.format(epic_driver_path, benchmark, database, num_warehouses, skew_factor,
                                           fullread, cpu_exec_num_threads, num_epochs, num_txns, split_fields,
-                                          commutative_ops, num_records, exec_device)
+                                          commutative_ops, num_records, exec_device, enable_txn_scheduler)
                 print(cmd)
                 command_output = subprocess.run(cmd, capture_output=True, text=True, shell=True)
                 print(command_output.stdout)
                 output_filename = output_file_template.format(benchmark, database, num_warehouses, skew_factor,
                                                               fullread, cpu_exec_num_threads, num_epochs, num_txns,
                                                               split_fields, commutative_ops, num_records,
-                                                              exec_device, repeat)
+                                                              exec_device, enable_txn_scheduler, repeat)
                 output_filepath = os.path.join(output_path, output_filename)
                 with open(output_filepath, "w") as output_file:
                     output_file.write(command_output.stdout)
