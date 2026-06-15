@@ -21,34 +21,64 @@
 namespace epic::tpcc {
 
 /**
- * Computes an operation cost for a transaction based on its type and parameters.
- * The cost approximates the number of table operations (reads + writes) the
- * transaction will perform during execution.
+ * Computes the exact number of table operations (reads + writes) that a
+ * transaction will perform during execution.  Derived from the per-op counts
+ * in TpccGpuSubmitter::prepareSubmitTpccTxn (tpcc_gpu_submitter.cu):
  *
- * Cost semantics:
- *   PAYMENT:      ~6 ops         → cost 0 (lightest)
- *   ORDER_STATUS: ~2+n ops       → cost 1 (light)
- *   STOCK_LEVEL:  ~n ops         → cost 2 (medium)
- *   NEW_ORDER:    ~6+4n ops      → cost 3 (heavy)
- *   DELIVERY:     ~50+2*sum ops  → cost 4 (heaviest)
+ *   PAYMENT:      wh(2)+dist(2)+cust(2)                      = 6
+ *   ORDER_STATUS: cust(1)+order(1)+orderline(n)              = 2 + n
+ *   STOCK_LEVEL:  stock(n)                                    = n
+ *   NEW_ORDER:    6 + item(n)+orderline(n)+stock(2n)         = 6 + 4n
+ *   DELIVERY:     50 + orderline(2*sum)                      = 50 + 2*sum(n)
  */
-inline uint32_t getTpccTxnCost(BaseTxn *txn)
+inline uint32_t getTpccTxnOpCount(BaseTxn *txn)
 {
     switch (static_cast<TpccTxnType>(txn->txn_type))
     {
     case TpccTxnType::PAYMENT:
-        return 0;
-    case TpccTxnType::ORDER_STATUS:
-        return 1;
-    case TpccTxnType::STOCK_LEVEL:
-        return 2;
-    case TpccTxnType::NEW_ORDER:
-        return 3;
-    case TpccTxnType::DELIVERY:
-        return 4;
-    default:
-        return 2; /* unknown types go to medium bucket */
+        return 6;
+    case TpccTxnType::ORDER_STATUS: {
+        auto *p = reinterpret_cast<OrderStatusTxnInput *>(txn->data);
+        return 2 + p->num_items;
     }
+    case TpccTxnType::STOCK_LEVEL: {
+        auto *p = reinterpret_cast<StockLevelTxnInput *>(txn->data);
+        return p->num_items;
+    }
+    case TpccTxnType::NEW_ORDER: {
+        auto *p = reinterpret_cast<NewOrderTxnInput<FixedSizeTxn> *>(txn->data);
+        return 6 + 4 * p->num_items;
+    }
+    case TpccTxnType::DELIVERY: {
+        auto *p = reinterpret_cast<DeliveryTxnInput *>(txn->data);
+        uint32_t total_items = 0;
+        for (uint32_t i = 0; i < 10; ++i)
+            total_items += p->num_items[i];
+        return 50 + 2 * total_items;
+    }
+    default:
+        return 6; /* unknown types fallback to medium */
+    }
+}
+
+/**
+ * Map an operation count to a cost bucket index.
+ *
+ * Bucket boundaries (covering payment=6 to delivery=350+):
+ *   bucket 0:  ops <= 6       (PAYMENT)
+ *   bucket 1:  ops 7-17       (ORDER_STATUS, small STOCK_LEVEL)
+ *   bucket 2:  ops 18-35      (small NEW_ORDER, large STOCK_LEVEL)
+ *   bucket 3:  ops 36-70      (large NEW_ORDER, small DELIVERY)
+ *   bucket 4:  ops > 70       (DELIVERY)
+ */
+inline uint32_t getTpccTxnCost(BaseTxn *txn)
+{
+    uint32_t ops = getTpccTxnOpCount(txn);
+    if (ops <= 6)   return 0;
+    if (ops <= 17)  return 1;
+    if (ops <= 35)  return 2;
+    if (ops <= 70)  return 3;
+    return 4;
 }
 
 /** Number of distinct cost buckets. Must be >= max(getTpccTxnCost) + 1. */
