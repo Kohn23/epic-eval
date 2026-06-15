@@ -1,9 +1,10 @@
 //
 // Created on 2026-06-14.
 //
-// Transaction scheduler for TPC-C that reorders transactions by operation cost
-// so that GPU blocks contain similarly-sized transactions, preventing long txns
-// from blocking short ones within the same warp/block.
+// Transaction scheduler for TPC-C that reorders transactions so that
+// GPU blocks contain similarly-sized transactions operating on the
+// same warehouse, preventing long txns from straggling short ones
+// and improving version-chain locality.
 //
 
 #ifndef TPCC_TXN_SCHEDULER_H
@@ -19,6 +20,18 @@
 #include "util_log.h"
 
 namespace epic::tpcc {
+
+/** Number of op-count sub-buckets within each warehouse bucket. */
+constexpr uint32_t kOpsBuckets = 5;
+
+/**
+ * Extracts the primary warehouse_id from any TPC-C transaction input.
+ * All TxnInput types place the warehouse_id field at offset 0 of `data`.
+ */
+inline uint32_t getTpccTxnWarehouseId(BaseTxn *txn)
+{
+    return reinterpret_cast<uint32_t *>(txn->data)[0];
+}
 
 /**
  * Computes the exact number of table operations (reads + writes) that a
@@ -57,21 +70,21 @@ inline uint32_t getTpccTxnOpCount(BaseTxn *txn)
         return 50 + 2 * total_items;
     }
     default:
-        return 6; /* unknown types fallback to medium */
+        return 6;
     }
 }
 
 /**
- * Map an operation count to a cost bucket index.
+ * Map an operation count to a sub-bucket index within a warehouse group.
  *
- * Bucket boundaries (covering payment=6 to delivery=350+):
- *   bucket 0:  ops <= 6       (PAYMENT)
- *   bucket 1:  ops 7-17       (ORDER_STATUS, small STOCK_LEVEL)
- *   bucket 2:  ops 18-35      (small NEW_ORDER, large STOCK_LEVEL)
- *   bucket 3:  ops 36-70      (large NEW_ORDER, small DELIVERY)
- *   bucket 4:  ops > 70       (DELIVERY)
+ * Sub-bucket boundaries (covering payment=6 to delivery=350+):
+ *   0:  ops <= 6       (PAYMENT)
+ *   1:  ops 7-17       (ORDER_STATUS, small STOCK_LEVEL)
+ *   2:  ops 18-35      (small NEW_ORDER, large STOCK_LEVEL)
+ *   3:  ops 36-70      (large NEW_ORDER, small DELIVERY)
+ *   4:  ops > 70       (DELIVERY)
  */
-inline uint32_t getTpccTxnCost(BaseTxn *txn)
+inline uint32_t getTpccTxnOpsBucket(BaseTxn *txn)
 {
     uint32_t ops = getTpccTxnOpCount(txn);
     if (ops <= 6)   return 0;
@@ -81,22 +94,32 @@ inline uint32_t getTpccTxnCost(BaseTxn *txn)
     return 4;
 }
 
-/** Number of distinct cost buckets. Must be >= max(getTpccTxnCost) + 1. */
-constexpr uint32_t kNumCostBuckets = 5;
+/**
+ * Composite sort key: warehouse_id (primary) × kOpsBuckets + ops_bucket (secondary).
+ * This groups transactions by warehouse first, then by op-count within
+ * each warehouse, giving both version-chain locality and homogeneous blocks.
+ */
+inline uint32_t getTpccTxnCost(BaseTxn *txn, uint32_t num_warehouses)
+{
+    uint32_t wh = getTpccTxnWarehouseId(txn);
+    // warehouse_id is 1-based, map to 0-based
+    uint32_t wh_idx = (wh > 0 && wh <= num_warehouses) ? wh - 1 : 0;
+    uint32_t ops_bucket = getTpccTxnOpsBucket(txn);
+    return wh_idx * kOpsBuckets + ops_bucket;
+}
 
 /**
- * Reorders transactions in a PackedTxnArray by operation cost so that
- * similarly-sized transactions are contiguous. This causes GPU blocks
- * (which consume txns sequentially) to be homogeneously loaded,
- * preventing long txns from straggling short ones.
+ * Reorders transactions in a PackedTxnArray by (warehouse_id, op_count) so that:
+ * 1. Same-warehouse txns are contiguous → version-chain locality
+ * 2. Within each warehouse, similar-length txns are together → homogeneous blocks
  *
  * Algorithm: 3-pass bucket sort
- *   Pass 1 — Count: tally txns per cost bucket
+ *   Pass 1 — Count: tally txns per (warehouse × ops_bucket)
  *   Pass 2 — Prefix sum: compute output start offset per bucket
  *   Pass 3 — Scatter: copy each txn to its bucket region in output buffer
  *
  * @param txn_array  The packed transaction array to reorder in-place (CPU-side)
- * @param config     TPC-C configuration (for logging)
+ * @param config     TPC-C configuration (for num_warehouses and logging)
  */
 inline void scheduleTpccTxns(PackedTxnArray<TpccTxn> &txn_array, const TpccConfig &config)
 {
@@ -108,20 +131,22 @@ inline void scheduleTpccTxns(PackedTxnArray<TpccTxn> &txn_array, const TpccConfi
         return;
     }
 
+    uint32_t num_buckets = config.num_warehouses * kOpsBuckets;
+
     /* --- Pass 1: Count txns per bucket --- */
-    std::vector<uint32_t> bucket_counts(kNumCostBuckets, 0);
+    std::vector<uint32_t> bucket_counts(num_buckets, 0);
 
     for (uint32_t i = 0; i < txn_array.num_txns; ++i)
     {
         BaseTxn *txn = txn_array.getTxn(i);
-        uint32_t cost = getTpccTxnCost(txn);
-        ++bucket_counts[cost];
+        uint32_t bucket = getTpccTxnCost(txn, config.num_warehouses);
+        ++bucket_counts[bucket];
     }
 
     /* --- Pass 2: Compute bucket start offsets (prefix sum of counts) --- */
-    std::vector<uint32_t> bucket_starts(kNumCostBuckets, 0);
+    std::vector<uint32_t> bucket_starts(num_buckets, 0);
     uint32_t offset = 0;
-    for (uint32_t b = 0; b < kNumCostBuckets; ++b)
+    for (uint32_t b = 0; b < num_buckets; ++b)
     {
         bucket_starts[b] = offset;
         offset += bucket_counts[b];
@@ -144,7 +169,7 @@ inline void scheduleTpccTxns(PackedTxnArray<TpccTxn> &txn_array, const TpccConfi
     for (uint32_t i = 0; i < txn_array.num_txns; ++i)
     {
         BaseTxn *txn = txn_array.getTxn(i);
-        uint32_t cost = getTpccTxnCost(txn);
+        uint32_t bucket = getTpccTxnCost(txn, config.num_warehouses);
 
         /* txn byte size: from current index layout */
         uint32_t txn_begin = old_index[i];
@@ -152,8 +177,8 @@ inline void scheduleTpccTxns(PackedTxnArray<TpccTxn> &txn_array, const TpccConfi
         uint32_t txn_size = txn_end - txn_begin;
 
         /* Place txn in output at new position */
-        uint32_t dst_txn_id = bucket_cursors[cost];
-        ++bucket_cursors[cost];
+        uint32_t dst_txn_id = bucket_cursors[bucket];
+        ++bucket_cursors[bucket];
 
         /* Copy txn data to new position */
         uint32_t dst_byte_offset = new_byte_offset;
@@ -173,8 +198,15 @@ inline void scheduleTpccTxns(PackedTxnArray<TpccTxn> &txn_array, const TpccConfi
     Free(old_txns);
     Free(old_index);
 
-    logger.Info("Scheduler: reordered {} txns into {} cost buckets, packed size {} bytes",
-        txn_array.num_txns, kNumCostBuckets, new_byte_offset);
+    /* Count how many buckets are non-empty for logging */
+    uint32_t nonempty = 0;
+    for (uint32_t b = 0; b < num_buckets; ++b)
+        if (bucket_counts[b] > 0) ++nonempty;
+
+    logger.Info("Scheduler: reordered {} txns into {}/{} non-empty buckets "
+                "(warehouses={} × ops_buckets={}), packed size {} bytes",
+        txn_array.num_txns, nonempty, num_buckets,
+        config.num_warehouses, kOpsBuckets, new_byte_offset);
 }
 
 } // namespace epic::tpcc
