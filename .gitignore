@@ -40,7 +40,8 @@ build/
 
 # output
 epic_output/
-epic_profile/.gitkeep
+epic_profile/
+
 
 # temp files
 terminal
