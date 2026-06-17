@@ -40,7 +40,8 @@ build/
 
 # output
 epic_output/
-epic_profile/
+epic_profile/*
+!epic_profile/test.ncu-rep
 
 # temp files
 terminal
