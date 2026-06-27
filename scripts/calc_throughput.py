@@ -1,42 +1,106 @@
 #!/usr/bin/env python3
-"""Calculate throughput from epic_driver stdout.
+"""Calculate throughput from epic_driver stdout, with per-stage breakdown.
 
 Usage:
-    ./build/epic_driver -b tpccfull -d epic -w 64 ... | python3 scripts/calc_throughput.py
+    ./build/epic_driver -b tpccfull -d epic -w 64 ... 2>&1 | python3 scripts/calc_throughput.py
+    python3 scripts/calc_throughput.py epic_output/output__b...txt
 """
 
 import sys
 import re
 
-# Patterns for each timed stage
-PATTERNS = {
-    "index_tsf": re.compile(r"Epoch (\d+) index_transfer time: (\d+) us"),
-    "aux1":      re.compile(r"Epoch (\d+) gpu aux index time: (\d+) us"),
-    "aux2":      re.compile(r"Epoch (\d+) gpu aux index part2 time: (\d+) us"),
-    "index":     re.compile(r"Epoch (\d+) indexing time: (\d+) us"),
-    "init_tsf":  re.compile(r"Epoch (\d+) init_transfer time: (\d+) us"),
-    "sub":       re.compile(r"Epoch (\d+) submission time: (\d+) us"),
-    "init":      re.compile(r"Epoch (\d+) initialization time: (\d+) us"),
-    "exec_tsf":  re.compile(r"Epoch (\d+) exec_transfer time: (\d+) us"),
-    "exec":      re.compile(r"Epoch (\d+) execution time: (\d+) us"),
-}
+# Patterns for each timed stage (in epoch execution order)
+PATTERNS_ORDERED = [
+    ("index_tsf", "index xfer",    re.compile(r"Epoch (\d+) index_transfer time: (\d+) us")),
+    ("aux1",      "gpu aux idx",   re.compile(r"Epoch (\d+) gpu aux index time: (\d+) us")),
+    ("aux2",      "aux idx pt2",   re.compile(r"Epoch (\d+) gpu aux index part2 time: (\d+) us")),
+    ("index",     "index (cuco)",  re.compile(r"Epoch (\d+) indexing time: (\d+) us")),
+    ("init_tsf",  "init xfer",     re.compile(r"Epoch (\d+) init_transfer time: (\d+) us")),
+    ("sub",       "submission",    re.compile(r"Epoch (\d+) submission time: (\d+) us")),
+    ("init",      "init (MVCC)",   re.compile(r"Epoch (\d+) initialization time: (\d+) us")),
+    ("exec_tsf",  "exec xfer",     re.compile(r"Epoch (\d+) exec_transfer time: (\d+) us")),
+    ("exec",      "execution",     re.compile(r"Epoch (\d+) execution time: (\d+) us")),
+]
+
+STAGE_KEYS = [k for k, _, _ in PATTERNS_ORDERED]
+STAGE_LABELS = [l for _, l, _ in PATTERNS_ORDERED]
 
 
 def parse_output(lines):
     """Parse timing data from epic_driver log lines, return dict of epoch -> stage -> us."""
     epochs = {}
     for line in lines:
-        for stage, pat in PATTERNS.items():
+        for key, _, pat in PATTERNS_ORDERED:
             m = pat.search(line)
             if m:
                 eid = int(m.group(1))
                 us = int(m.group(2))
-                epochs.setdefault(eid, {})[stage] = us
+                epochs.setdefault(eid, {})[key] = us
     return epochs
 
 
+def bar(frac, width=30):
+    """Return a simple ASCII bar for a fraction (0.0-1.0)."""
+    filled = int(round(frac * width))
+    return "\u2588" * filled + "\u2591" * (width - filled)
+
+
+def fmt_us(us):
+    """Format microseconds to a human-readable string."""
+    if us >= 1_000_000:
+        return f"{us / 1_000_000:.2f} s"
+    elif us >= 1_000:
+        return f"{us / 1_000:.2f} ms"
+    else:
+        return f"{us:,} \u00b5s"
+
+
+def print_breakdown(stages, num_txns, title="Stage Breakdown"):
+    """Print a detailed per-stage breakdown table."""
+    e2e_us = sum(stages.values())
+
+    print(f"\n-- {title} --")
+    header = f"  {'Stage':<18} {'Time':>12} {'%':>7}  {'':30s}"
+    print(header)
+    print(f"  {'-'*18} {'-'*12} {'-'*7}  {'-'*30}")
+
+    for key, label in zip(STAGE_KEYS, STAGE_LABELS):
+        us = stages.get(key, 0)
+        pct = us / e2e_us * 100 if e2e_us else 0
+        print(f"  {label:<18} {fmt_us(us):>12} {pct:>6.1f}%  {bar(pct / 100)}")
+
+    print(f"  {'-'*18} {'-'*12} {'-'*7}  {'-'*30}")
+    print(f"  {'TOTAL':<18} {fmt_us(e2e_us):>12} {'100.0%':>7}")
+
+    # Grouped summary
+    xfer = (
+        stages.get("index_tsf", 0) +
+        stages.get("init_tsf", 0) +
+        stages.get("exec_tsf", 0)
+    )
+    gpu_kernels = e2e_us - xfer
+    print(f"\n  -- Grouped --")
+    pct_gpu = gpu_kernels / e2e_us * 100 if e2e_us else 0
+    pct_xfer = xfer / e2e_us * 100 if e2e_us else 0
+    print(f"  {'  GPU kernels':<18} {fmt_us(gpu_kernels):>12} {pct_gpu:>6.1f}%")
+    print(f"  {'  H2D transfers':<18} {fmt_us(xfer):>12} {pct_xfer:>6.1f}%")
+
+    tput = num_txns / (e2e_us / 1_000_000) / 1_000_000
+    print(f"\n  Throughput: {tput:.2f} M txn/s  ({num_txns:,} txns / {fmt_us(e2e_us)})")
+
+
 def main():
-    lines = sys.stdin.readlines()
+    if len(sys.argv) > 1 and sys.argv[1] in ("-h", "--help"):
+        print(__doc__)
+        sys.exit(0)
+
+    # Support both stdin pipe and file argument
+    if len(sys.argv) > 1:
+        with open(sys.argv[1]) as f:
+            lines = f.readlines()
+    else:
+        lines = sys.stdin.readlines()
+
     epochs = parse_output(lines)
 
     if not epochs:
@@ -54,45 +118,45 @@ def main():
         print("ERROR: Could not determine num_txns.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"{'='*60}")
-    print(f"{'Epic Throughput Report':^60}")
-    print(f"{'='*60}")
+    print(f"{'='*72}")
+    print(f"{'EPIC Throughput Report':^72}")
+    print(f"{'='*72}")
     print(f"  Txns per epoch : {num_txns:,}")
     print(f"  Total epochs   : {len(epochs)}")
     print(f"  Total txns     : {num_txns * len(epochs):,}")
-    print(f"{'='*60}")
-    print(f"  {'Epoch':<8} {'E2E(us)':>10} {'Exec(us)':>10} {'E2E(M txn/s)':>15} {'Exec(M txn/s)':>15}")
-    print(f"  {'-'*56}")
+
+    # Per-epoch summary
+    print(f"\n-- Per-Epoch Summary --")
+    print(f"  {'Epoch':<8} {'Total':>12} {'Exec':>12} {'Throughput':>14}")
+    print(f"  {'-'*48}")
 
     total_e2e_us = 0
-    total_exec_us = 0
-
     for eid in sorted(epochs):
         stages = epochs[eid]
         e2e_us = sum(stages.values())
         exec_us = stages.get("exec", 0)
         total_e2e_us += e2e_us
-        total_exec_us += exec_us
-        e2e_tput = num_txns / (e2e_us / 1_000_000) / 1_000_000
-        exec_tput = num_txns / (exec_us / 1_000_000) / 1_000_000 if exec_us else 0
-        print(f"  {eid:<8} {e2e_us:>10,} {exec_us:>10,} {e2e_tput:>15.2f} {exec_tput:>15.2f}")
+        tput = num_txns / (e2e_us / 1_000_000) / 1_000_000
+        print(f"  {eid:<8} {fmt_us(e2e_us):>12} {fmt_us(exec_us):>12} {tput:>12.2f} M txn/s")
 
-    print(f"  {'-'*56}")
-    avg_e2e = (num_txns * len(epochs)) / (total_e2e_us / 1_000_000) / 1_000_000
-    avg_exec = (num_txns * len(epochs)) / (total_exec_us / 1_000_000) / 1_000_000 if total_exec_us else 0
-    print(f"  {'Overall':<8} {total_e2e_us:>10,} {total_exec_us:>10,} {avg_e2e:>15.2f} {avg_exec:>15.2f}")
+    avg_e2e = total_e2e_us / len(epochs)
+    avg_tput = (num_txns * len(epochs)) / (total_e2e_us / 1_000_000) / 1_000_000
+    print(f"  {'-'*48}")
+    print(f"  {'Avg':<8} {fmt_us(avg_e2e):>12}  {'':>12} {avg_tput:>12.2f} M txn/s")
 
-    # Steady-state (last epoch only)
+    # Detailed breakdown of last epoch (steady-state)
     last_eid = max(epochs)
-    last_e2e = sum(epochs[last_eid].values())
-    last_exec = epochs[last_eid].get("exec", 0)
-    steady_e2e = num_txns / (last_e2e / 1_000_000) / 1_000_000
-    steady_exec = num_txns / (last_exec / 1_000_000) / 1_000_000 if last_exec else 0
-    print(f"{'='*60}")
-    print(f"  Steady-state (epoch {last_eid}):")
-    print(f"    E2E        : {steady_e2e:.2f} M txn/s")
-    print(f"    GPU Exec   : {steady_exec:.2f} M txn/s")
-    print(f"{'='*60}")
+    print_breakdown(epochs[last_eid], num_txns, f"Steady-State Epoch {last_eid} Breakdown")
+
+    # Aggregate breakdown (all epochs summed)
+    all_stages = {k: 0 for k in STAGE_KEYS}
+    for eid in epochs:
+        for k, v in epochs[eid].items():
+            all_stages[k] += v
+    total_txns = num_txns * len(epochs)
+    print_breakdown(all_stages, total_txns, f"All {len(epochs)} Epochs Aggregate Breakdown")
+
+    print(f"\n{'='*72}")
 
 
 if __name__ == "__main__":

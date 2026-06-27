@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-project(epic CXX)
+project(epic CXX CUDA)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -13,19 +13,38 @@ include_directories(${JEMALLOC_INCLUDE_DIRS})
 
 add_definitions(-DCACHE_LINE_SIZE=64)
 
-find_package(CUDA QUIET)
+set(CUDA_FOUND ON)
+if(DEFINED CUDA_FOUND)
+    message(STATUS "cuda found")
+else()
+    message(STATUS "cuda not found")
+endif()
 
-if (CUDA_FOUND)
-    set(CMAKE_CUDA_SEPARABLE_COMPILATION ON)
-    enable_language(CUDA)
-    add_definitions(-DEPIC_CUDA_AVAILABLE)
-    set(CMAKE_CUDA_STANDARD 17)
-    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-relaxed-constexpr")
-    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda")
-    set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -g -G")
-else ()
-    message(WARNING "CUDA not found, using CPU only. CUDA Related modules will not be available.")
-endif ()
+
+# if (CUDA_FOUND)
+#     set(CMAKE_CUDA_SEPARABLE_COMPILATION ON)
+#     enable_language(CUDA)
+#     add_definitions(-DEPIC_CUDA_AVAILABLE)
+#     set(CMAKE_CUDA_STANDARD 17)
+#     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-relaxed-constexpr")
+#     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda")
+#     set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -g -G")
+#     set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo")
+
+# else ()
+#     message(WARNING "CUDA not found, using CPU only. CUDA Related modules will not be available.")
+# endif ()
+
+message(STATUS "The value is: ${CUDA_FOUND}")
+
+set(CMAKE_CUDA_SEPARABLE_COMPILATION ON)
+enable_language(CUDA)
+add_definitions(-DEPIC_CUDA_AVAILABLE)
+set(CMAKE_CUDA_STANDARD 17)
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-relaxed-constexpr")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} --expt-extended-lambda")
+set(CMAKE_CUDA_FLAGS_DEBUG "${CMAKE_CUDA_FLAGS_DEBUG} -g -G")
+set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -lineinfo")
 
 set(EPIC_CPU_SOURCE
         util_log.cpp
@@ -94,12 +113,15 @@ if (CUDA_FOUND)
     include_directories(${CMAKE_SOURCE_DIR}/third_party/cuco/include)
 endif()
 add_library(epic STATIC ${EPIC_SOURCE})
-if (CUDA_FOUND)
-    set_property(TARGET epic PROPERTY CUDA_ARCHITECTURES 70)
-endif ()
+# if (CUDA_FOUND)
+#     set_property(TARGET epic PROPERTY CUDA_ARCHITECTURES 70)
+# endif ()
+set_property(TARGET epic PROPERTY CUDA_ARCHITECTURES 70)
+
 target_link_libraries(epic ${JEMALLOC_LIBRARIES})
 
 add_executable(epic_driver main.cpp)
+set_property(TARGET epic_driver PROPERTY CUDA_ARCHITECTURES 70)
 target_link_libraries(epic_driver epic)
 target_link_libraries(epic_driver ${JEMALLOC_LIBRARIES})
 
