@@ -77,7 +77,6 @@ set(EPIC_GPU_SOURCE
         benchmarks/tpcc_gpu_submitter.cu
         gpu_configuration.cu
         benchmarks/tpcc_gpu_executor.cu
-        gpu_hashtable_index.cu
         util_memory.cu
         benchmarks/tpcc_gpu_index.cu
         benchmarks/ycsb_gpu_index.cu

@@ -25,6 +25,30 @@ PATTERNS_ORDERED = [
 STAGE_KEYS = [k for k, _, _ in PATTERNS_ORDERED]
 STAGE_LABELS = [l for _, l, _ in PATTERNS_ORDERED]
 
+# Pattern to extract the full command line from the log
+CMD_PAT = re.compile(r"Command: (.+)$")
+
+
+def parse_cmdline_from_log(lines):
+    """Extract -b and -g values from the 'Command: ...' log line emitted by epic_driver."""
+    bench_type = ""
+    use_gpu = False
+    for line in lines:
+        m = CMD_PAT.search(line)
+        if m:
+            cmd = m.group(1)
+            # Split respecting quotes (simple split is enough for these args)
+            tokens = cmd.split()
+            for i, tok in enumerate(tokens):
+                if tok in ("-b", "--bench") and i + 1 < len(tokens):
+                    bench_type = tokens[i + 1]
+                elif tok == "-g":
+                    use_gpu = True
+                elif tok.startswith("-g"):  # handle fused -gXXX (unlikely but safe)
+                    use_gpu = True
+            break
+    return bench_type, use_gpu
+
 
 def parse_output(lines):
     """Parse timing data from epic_driver log lines, return dict of epoch -> stage -> us."""
@@ -118,9 +142,15 @@ def main():
         print("ERROR: Could not determine num_txns.", file=sys.stderr)
         sys.exit(1)
 
+    # Auto-detect -b and -g from the 'Command:' log line
+    bench_type, use_group = parse_cmdline_from_log(lines)
+
     print(f"{'='*72}")
     print(f"{'EPIC Throughput Report':^72}")
     print(f"{'='*72}")
+    if bench_type:
+        print(f"  Benchmark      : {bench_type}")
+    print(f"  Grouped        : {'Yes' if use_group else 'No'}")
     print(f"  Txns per epoch : {num_txns:,}")
     print(f"  Total epochs   : {len(epochs)}")
     print(f"  Total txns     : {num_txns * len(epochs):,}")

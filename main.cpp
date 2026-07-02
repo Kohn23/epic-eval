@@ -230,6 +230,17 @@ int main(int argc, char **argv)
         tpcc_config.gacco_tpcc_stock_use_atomic = false;
     }
 
+    /* Log the full command line for provenance */
+    {
+        std::string cmdline;
+        for (int i = 0; i < argc; ++i)
+        {
+            if (i > 0) cmdline += " ";
+            cmdline += argv[i];
+        }
+        epic::Logger::GetInstance().Info("Command: {}", cmdline);
+    }
+
     std::unique_ptr<epic::Benchmark> benchmark;
     if (bench == "tpcc")
     {
