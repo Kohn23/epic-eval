@@ -30,6 +30,7 @@ struct BaseTxnSize
     static constexpr size_t value = sizeof(BaseTxn) + sizeof(Txn);
 };
 
+// For GACCO only
 template<typename Txn>
 class TxnInputArray
 {
@@ -57,6 +58,7 @@ public:
     }
 };
 
+// For GACCO only
 template<typename TxnType>
 class TxnArray
 {
@@ -163,12 +165,6 @@ public:
     friend class TxnBridge;
 };
 
-class TxnRunner
-{
-public:
-    void run(BaseTxn *txn);
-};
-
 template<typename TxnType>
 class PackedTxnArray
 {
@@ -256,9 +252,6 @@ public:
         return reinterpret_cast<BaseTxn *>(&txns[index[txn_id]]);
     }
 
-    friend class TxnBridge;
-    friend class PackedTxnBridge;
-    friend class PackedTxnArrayBuilder;
 };
 
 } // namespace epic

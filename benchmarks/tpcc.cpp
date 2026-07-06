@@ -301,29 +301,81 @@ void TpccDb::generateTxns()
     auto &logger = Logger::GetInstance();
 
     TpccTxnGenerator generator(config);
+    constexpr uint32_t txn_sizes[6] = {0, BaseTxnSize<NewOrderTxnInput<FixedSizeTxn>>::value,
+        BaseTxnSize<PaymentTxnInput>::value, BaseTxnSize<OrderStatusTxnInput>::value,
+        BaseTxnSize<DeliveryTxnInput>::value, BaseTxnSize<StockLevelTxnInput>::value};
+
+    /* pre-compute counts per type based on txn_mix percentages */
+    uint32_t type_counts[6] = {0};
+    uint32_t total_pct = config.txn_mix.new_order + config.txn_mix.payment + config.txn_mix.order_status +
+                         config.txn_mix.delivery + config.txn_mix.stock_level;
+    if (total_pct == 0)
+    {
+        total_pct = 100;
+    }
+
+    type_counts[1] = static_cast<uint32_t>(config.num_txns) * config.txn_mix.new_order / total_pct;
+    type_counts[2] = static_cast<uint32_t>(config.num_txns) * config.txn_mix.payment / total_pct;
+    type_counts[3] = static_cast<uint32_t>(config.num_txns) * config.txn_mix.order_status / total_pct;
+    type_counts[4] = static_cast<uint32_t>(config.num_txns) * config.txn_mix.delivery / total_pct;
+    type_counts[5] = static_cast<uint32_t>(config.num_txns) * config.txn_mix.stock_level / total_pct;
+
+    /* distribute remainder to the first non-zero type */
+    uint32_t sum = type_counts[1] + type_counts[2] + type_counts[3] + type_counts[4] + type_counts[5];
+    if (sum < config.num_txns)
+    {
+        for (int t = 1; t <= 5; ++t)
+        {
+            if (type_counts[t] > 0)
+            {
+                type_counts[t] += (config.num_txns - sum);
+                break;
+            }
+        }
+    }
+
     for (size_t epoch = 0; epoch < config.epochs; ++epoch)
     {
-        logger.Info("Generating epoch {}", epoch);
+        logger.Info("Generating epoch {} {}", epoch,
+            config.group_txns_by_type ? "(grouped by type)" : "(random mix)");
         TpccTxnArrayT &txn_input_array = txn_array[epoch];
         uint32_t curr_size = 0;
-        for (size_t i = 0; i < config.num_txns; ++i)
+
+        if (config.group_txns_by_type)
         {
-#if 0
-            BaseTxn *txn = txn_array[epoch].getTxn(i);
-            uint32_t timestamp = epoch * config.num_txns + i;
-            generator.generateTxn(txn, timestamp);
-#else
-            TpccTxnType txn_type = generator.getTxnType();
-            constexpr uint32_t txn_sizes[6] = {0, BaseTxnSize<NewOrderTxnInput<FixedSizeTxn>>::value,
-                BaseTxnSize<PaymentTxnInput>::value, BaseTxnSize<OrderStatusTxnInput>::value,
-                BaseTxnSize<DeliveryTxnInput>::value, BaseTxnSize<StockLevelTxnInput>::value};
-            txn_input_array.index[i] = curr_size;
-            curr_size += txn_sizes[static_cast<uint32_t>(txn_type)];
+            /* generate all txns grouped by type so same-type txns end up in same GPU blocks */
+            size_t logical_id = 0;
+            for (uint32_t txn_type_int = 1; txn_type_int <= 5; ++txn_type_int)
+            {
+                auto txn_type = static_cast<TpccTxnType>(txn_type_int);
+                uint32_t type_size = txn_sizes[txn_type_int];
+                for (uint32_t j = 0; j < type_counts[txn_type_int]; ++j)
+                {
+                    txn_input_array.index[logical_id] = curr_size;
+                    curr_size += type_size;
+                    BaseTxn *txn = txn_input_array.getTxn(logical_id);
+                    uint32_t timestamp = epoch * config.num_txns + logical_id;
+                    generator.generateTxn(txn_type, txn, timestamp);
+                    ++logical_id;
+                }
+            }
             txn_input_array.size = curr_size;
-            BaseTxn *txn = txn_input_array.getTxn(i);
-            uint32_t timestamp = epoch * config.num_txns + i;
-            generator.generateTxn(txn_type, txn, timestamp);
-#endif
+            logger.Info("  Generated: NEW_ORDER={} PAYMENT={} ORDER_STATUS={} DELIVERY={} STOCK_LEVEL={}",
+                type_counts[1], type_counts[2], type_counts[3], type_counts[4], type_counts[5]);
+        }
+        else
+        {
+            /* original random interleaving */
+            for (size_t i = 0; i < config.num_txns; ++i)
+            {
+                TpccTxnType txn_type = generator.getTxnType();
+                txn_input_array.index[i] = curr_size;
+                curr_size += txn_sizes[static_cast<uint32_t>(txn_type)];
+                txn_input_array.size = curr_size;
+                BaseTxn *txn = txn_input_array.getTxn(i);
+                uint32_t timestamp = epoch * config.num_txns + i;
+                generator.generateTxn(txn_type, txn, timestamp);
+            }
         }
     }
 }

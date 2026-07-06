@@ -24,9 +24,10 @@ static constexpr struct option long_options[] = {{"benchmark", required_argument
     {"num_txns", required_argument, nullptr, 's'}, {"split_fields", required_argument, nullptr, 'f'},
     {"commutative_ops", required_argument, nullptr, 'm'}, {"num_records", required_argument, nullptr, 'n'},
     {"exec_device", required_argument, nullptr, 'x'},
+    {"group_txns", no_argument, nullptr, 'g'},
     {nullptr, 0, nullptr, 0}};
 
-static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:";
+static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:g";
 
 int main(int argc, char **argv)
 {
@@ -206,6 +207,9 @@ int main(int argc, char **argv)
                 throw std::runtime_error("Invalid execution device");
             }
             break;
+        case 'g':
+            tpcc_config.group_txns_by_type = true;
+            break;
         default:
             throw std::runtime_error("Invalid option");
         }
@@ -224,6 +228,17 @@ int main(int argc, char **argv)
     } else {
         tpcc_config.gacco_use_atomic = false;
         tpcc_config.gacco_tpcc_stock_use_atomic = false;
+    }
+
+    /* Log the full command line for provenance */
+    {
+        std::string cmdline;
+        for (int i = 0; i < argc; ++i)
+        {
+            if (i > 0) cmdline += " ";
+            cmdline += argv[i];
+        }
+        epic::Logger::GetInstance().Info("Command: {}", cmdline);
     }
 
     std::unique_ptr<epic::Benchmark> benchmark;

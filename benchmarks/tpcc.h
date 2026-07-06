@@ -16,7 +16,6 @@
 #include <memory>
 
 #include "execution_planner.h"
-#include "table.h"
 #include "txn_bridge.h"
 #include <benchmarks/benchmark.h>
 #include <benchmarks/tpcc_executor.h>
@@ -31,8 +30,6 @@ class TpccDb : public Benchmark
 {
 private:
     TableExecutionPlanner *planner;
-
-    Table warehouse_table;
 
     TpccConfig config;
     std::vector<TpccTxnArrayT> txn_array;
