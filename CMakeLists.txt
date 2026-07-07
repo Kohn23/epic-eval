@@ -72,7 +72,6 @@ set(EPIC_GPU_SOURCE
         gpu_allocator.cu
         gpu_execution_planner.cu
         benchmarks/gpu_ycsb.cu
-        gpu_txn.cu
         util_gpu_transfer.cu
         benchmarks/tpcc_gpu_submitter.cu
         gpu_configuration.cu

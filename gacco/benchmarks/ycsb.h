@@ -22,7 +22,6 @@ namespace gacco::ycsb {
 
 using epic::TxnArray;
 using epic::TxnBridge;
-using epic::TxnInputArray;
 using epic::ycsb::YcsbConfig;
 using epic::ycsb::YcsbIndex;
 using epic::ycsb::YcsbTxn;

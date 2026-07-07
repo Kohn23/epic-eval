@@ -10,11 +10,10 @@
 #include <cassert>
 #include <type_traits>
 
-#include "gpu_txn.h"
 #include "util_log.h"
 #include "util_device_type.h"
 #include "util_math.h"
-#include <util_memory.h>
+#include "util_memory.h"
 
 namespace epic {
 
@@ -58,7 +57,7 @@ public:
     }
 };
 
-// For GACCO only
+
 template<typename TxnType>
 class TxnArray
 {
@@ -90,7 +89,7 @@ public:
 #ifdef EPIC_CUDA_AVAILABLE
         else if (device_type == DeviceType::GPU)
         {
-            txns = createGpuTxnArrayStorage(kBaseTxnSize * num_txns);
+            txns = allocateDeviceMemory(kBaseTxnSize * num_txns);
         }
 #endif
         else
@@ -119,7 +118,7 @@ public:
         else if (device == DeviceType::GPU)
         {
             logger.Trace("Allocating {} bytes for {} txns on GPU", formatSizeBytes(kBaseTxnSize * num_txns), num_txns);
-            txns = createGpuTxnArrayStorage(kBaseTxnSize * num_txns);
+            txns = allocateDeviceMemory(kBaseTxnSize * num_txns);
         }
 #endif // EPIC_CUDA_AVAILABLE
         else
@@ -150,7 +149,7 @@ public:
         {
             logger.Trace(
                 "Deallocating {} bytes for {} txns on GPU", formatSizeBytes(kBaseTxnSize * num_txns), num_txns);
-            txns = destroyGpuTxnArrayStorage(txns);
+            txns = freeDeviceMemory(txns);
         }
 #endif
     }
@@ -201,8 +200,8 @@ public:
 #ifdef EPIC_CUDA_AVAILABLE
         else if (device == DeviceType::GPU)
         {
-            txns = static_cast<uint8_t *>(createGpuTxnArrayStorage(capacity));
-            index = static_cast<uint32_t *>(createGpuTxnArrayStorage((num_txns + 1) * sizeof(uint32_t)));
+            txns = static_cast<uint8_t *>(allocateDeviceMemory(capacity));
+            index = static_cast<uint32_t *>(allocateDeviceMemory((num_txns + 1) * sizeof(uint32_t)));
         }
 #endif
         else
@@ -230,8 +229,8 @@ public:
         else if (device == DeviceType::GPU)
         {
             logger.Trace("Allocating {} bytes for {} txns on GPU", formatSizeBytes(capacity), num_txns);
-            txns = static_cast<uint8_t *>(createGpuTxnArrayStorage(capacity));
-            index = static_cast<uint32_t *>(createGpuTxnArrayStorage((num_txns + 1) * sizeof(uint32_t)));
+            txns = static_cast<uint8_t *>(allocateDeviceMemory(capacity));
+            index = static_cast<uint32_t *>(allocateDeviceMemory((num_txns + 1) * sizeof(uint32_t)));
         }
 #endif // EPIC_CUDA_AVAILABLE
         else

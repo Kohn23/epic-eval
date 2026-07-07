@@ -9,15 +9,12 @@
 
 namespace epic {
 
-struct FreeDelete
-{
-    void operator()(void *ptr)
-    {
-        free(ptr);
-    }
-};
+void* allocateDeviceMemory(size_t size);   
+void* freeDeviceMemory(void* ptr);
 
 void *allocatePinnedMemory(size_t size);
+void freePinedMemory(void *ptr);
+
 inline void *Malloc(size_t size)
 {
     void *retval = nullptr;
@@ -30,7 +27,6 @@ inline void *Malloc(size_t size)
     return retval;
 }
 
-void freePinedMemory(void *ptr);
 inline void Free(void *ptr)
 {
 #ifdef EPIC_CUDA_AVAILABLE

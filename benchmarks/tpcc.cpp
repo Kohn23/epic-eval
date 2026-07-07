@@ -13,7 +13,6 @@
 
 #include "util_log.h"
 #include "util_device_type.h"
-#include "gpu_txn.h"
 #include "gpu_allocator.h"
 #include "gpu_execution_planner.h"
 #include "benchmarks/tpcc_gpu_submitter.h"

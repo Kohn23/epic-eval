@@ -24,7 +24,6 @@ namespace gacco::tpcc {
 using epic::tpcc::TpccConfig;
 using epic::TxnArray;
 using epic::PackedTxnArray;
-using epic::TxnInputArray;
 using epic::tpcc::TpccTxn;
 using epic::tpcc::TpccTxnParam;
 using epic::tpcc::TpccTxnParam;
