@@ -336,11 +336,11 @@ void TpccDb::generateTxns()
     for (size_t epoch = 0; epoch < config.epochs; ++epoch)
     {
         logger.Info("Generating epoch {} {}", epoch,
-            config.group_txns_by_type ? "(grouped by type)" : "(random mix)");
+            config.group_mode == GroupMode::TYPE ? "(grouped by type)" : config.group_mode == GroupMode::MIX ? "(block-stripe mix)" : "(random mix)");
         TpccTxnArrayT &txn_input_array = txn_array[epoch];
         uint32_t curr_size = 0;
 
-        if (config.group_txns_by_type)
+        if (config.group_mode == GroupMode::TYPE)
         {
             /* generate all txns grouped by type so same-type txns end up in same GPU blocks */
             size_t logical_id = 0;
@@ -362,7 +362,51 @@ void TpccDb::generateTxns()
             logger.Info("  Generated: NEW_ORDER={} PAYMENT={} ORDER_STATUS={} DELIVERY={} STOCK_LEVEL={}",
                 type_counts[1], type_counts[2], type_counts[3], type_counts[4], type_counts[5]);
         }
-        else
+        else if (config.group_mode == GroupMode::MIX)
+        {
+            /* block-stripe interleaving: adjacent txns are different types
+             * so that warps within the same GPU block process diverse txns */
+            size_t logical_id = 0;
+            uint32_t type_pos[6] = {0};
+            const uint32_t type_order[] = {1, 3, 2, 4, 5}; /* NO, PMT, OS, DL, SL */
+            constexpr uint32_t num_types = 5;
+
+            /* build list of active types (types with non-zero count) */
+            uint32_t active_types[num_types];
+            uint32_t num_active = 0;
+            for (uint32_t ti = 0; ti < num_types; ++ti)
+            {
+                uint32_t tt = type_order[ti];
+                if (type_counts[tt] > 0)
+                {
+                    active_types[num_active++] = tt;
+                }
+            }
+
+            while (logical_id < config.num_txns)
+            {
+                for (uint32_t ai = 0; ai < num_active && logical_id < config.num_txns; ++ai)
+                {
+                    uint32_t tt = active_types[ai];
+                    if (type_pos[tt] < type_counts[tt])
+                    {
+                        auto txn_type = static_cast<TpccTxnType>(tt);
+                        uint32_t type_size = txn_sizes[tt];
+                        txn_input_array.index[logical_id] = curr_size;
+                        curr_size += type_size;
+                        BaseTxn *txn = txn_input_array.getTxn(logical_id);
+                        uint32_t timestamp = epoch * config.num_txns + logical_id;
+                        generator.generateTxn(txn_type, txn, timestamp);
+                        ++type_pos[tt];
+                        ++logical_id;
+                    }
+                }
+            }
+            txn_input_array.size = curr_size;
+            logger.Info("  Generated (MIX): NEW_ORDER={} PAYMENT={} ORDER_STATUS={} DELIVERY={} STOCK_LEVEL={}",
+                type_counts[1], type_counts[2], type_counts[3], type_counts[4], type_counts[5]);
+        }
+        else /* GroupMode::RANDOM */
         {
             /* original random interleaving */
             for (size_t i = 0; i < config.num_txns; ++i)

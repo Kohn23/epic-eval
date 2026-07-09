@@ -24,6 +24,13 @@ struct TpccTxnMix
     TpccTxnMix(uint32_t new_order, uint32_t payment, uint32_t order_status, uint32_t delivery, uint32_t stock_level);
 };
 
+enum class GroupMode : uint8_t
+{
+    RANDOM = 0, /* random interleaving (default) */
+    TYPE   = 1, /* group all same-type txns together */
+    MIX    = 2, /* interleave types within each block */
+};
+
 struct TpccConfig
 {
     TpccTxnMix txn_mix;
@@ -38,7 +45,7 @@ struct TpccConfig
     bool gacco_separate_txn_queue = true;
     bool gacco_use_atomic = false;
     bool gacco_tpcc_stock_use_atomic = true;
-    bool group_txns_by_type = false;
+    GroupMode group_mode = GroupMode::RANDOM;
     uint32_t cpu_exec_num_threads = 1;
 
     size_t warehouseTableSize() const

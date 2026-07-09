@@ -25,7 +25,7 @@ EPIC_DEFAULTS=( -b tpccfull
                 -a 0.0 
                 -r true 
                 -c 32 
-                -e 2 
+                -e 3
                 -s 100000 
                 -f true 
                 -m false 
@@ -43,6 +43,7 @@ Usage: $0 <command>
 
 Commands:
   show                     Print current default command line
+  import                   Import all .ncu-rep files from epic_profile/ to docs/log/
   ncu [ncu_args] epic [epic_args]
                            Run Nsight Compute with the given args.
                            "epic" separates ncu args (left) from epic_driver args (right).
@@ -59,6 +60,9 @@ Examples:
 
   # Show default command
   $0 show
+
+  # Import all .ncu-rep files
+  $0 import
 
 Env:
   EPIC_BIN              epic_driver path (default: ./build/epic_driver)
@@ -203,7 +207,9 @@ run_ncu() {
     local txn="${epic_map[-s]:-0}"
     local g_flag=""
     for ((i=0; i<${#epic_merged_lines[@]}; i++)); do
-        [[ "${epic_merged_lines[$i]}" == "-g" ]] && g_flag="g"
+        if [[ "${epic_merged_lines[$i]}" == "-g" ]]; then
+            g_flag="${epic_merged_lines[$((i+1))]}"
+        fi
     done
 
     local ncu_kernel ncu_set
@@ -233,10 +239,54 @@ run_ncu() {
     echo "Done. Open with: ncu-ui ${output}.ncu-rep &"
 }
 
+# ======== import ========
+run_import() {
+    local LOG_DIR="docs/log"
+    local count=0
+    local failed=0
+
+    if [[ ! -d "$PROFILE_DIR" ]]; then
+        echo "ERROR: Profile directory '$PROFILE_DIR' does not exist."
+        exit 1
+    fi
+
+    shopt -s nullglob
+    local files=("$PROFILE_DIR"/*.ncu-rep)
+    shopt -u nullglob
+
+    if [[ ${#files[@]} -eq 0 ]]; then
+        echo "No .ncu-rep files found in '$PROFILE_DIR'."
+        exit 0
+    fi
+
+    mkdir -p "$LOG_DIR"
+
+    echo "=== Importing ${#files[@]} .ncu-rep file(s) ==="
+    for f in "${files[@]}"; do
+        local basename
+        basename=$(basename "$f" .ncu-rep)
+        local output="$LOG_DIR/$basename"
+        echo -n "[$((++count))/${#files[@]}] $basename ... "
+        if ncu --import "$f" > "$output" 2>&1; then
+            echo "OK -> $output"
+        else
+            echo "FAILED"
+            ((failed++))
+        fi
+    done
+
+    echo ""
+    echo "Done. Imported $((count - failed))/${count} file(s)."
+    [[ $failed -gt 0 ]] && echo "WARNING: $failed import(s) failed."
+}
+
 # ======== Dispatch ========
 case "${1:-}" in
     show)
         run_show
+        ;;
+    import)
+        run_import
         ;;
     ncu)
         shift

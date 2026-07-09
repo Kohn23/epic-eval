@@ -24,10 +24,10 @@ static constexpr struct option long_options[] = {{"benchmark", required_argument
     {"num_txns", required_argument, nullptr, 's'}, {"split_fields", required_argument, nullptr, 'f'},
     {"commutative_ops", required_argument, nullptr, 'm'}, {"num_records", required_argument, nullptr, 'n'},
     {"exec_device", required_argument, nullptr, 'x'},
-    {"group_txns", no_argument, nullptr, 'g'},
+    {"group_txns", required_argument, nullptr, 'g'},
     {nullptr, 0, nullptr, 0}};
 
-static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:g";
+static char optstring[] = "b:d:w:a:r:c:e:s:f:m:n:x:g:";
 
 int main(int argc, char **argv)
 {
@@ -208,8 +208,26 @@ int main(int argc, char **argv)
             }
             break;
         case 'g':
-            tpcc_config.group_txns_by_type = true;
+        {
+            std::string g_arg = std::string(optarg);
+            if (g_arg == "type")
+            {
+                tpcc_config.group_mode = epic::tpcc::GroupMode::TYPE;
+            }
+            else if (g_arg == "mix")
+            {
+                tpcc_config.group_mode = epic::tpcc::GroupMode::MIX;
+            }
+            else if (g_arg == "random")
+            {
+                tpcc_config.group_mode = epic::tpcc::GroupMode::RANDOM;
+            }
+            else
+            {
+                throw std::runtime_error("Invalid group_txns mode, must be type, mix, or random");
+            }
             break;
+        }
         default:
             throw std::runtime_error("Invalid option");
         }

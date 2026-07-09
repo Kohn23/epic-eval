@@ -32,7 +32,7 @@ CMD_PAT = re.compile(r"Command: (.+)$")
 def parse_cmdline_from_log(lines):
     """Extract -b and -g values from the 'Command: ...' log line emitted by epic_driver."""
     bench_type = ""
-    use_gpu = False
+    group_mode = "random"  # default
     warehouse = ""
     for line in lines:
         m = CMD_PAT.search(line)
@@ -45,12 +45,10 @@ def parse_cmdline_from_log(lines):
                     bench_type = tokens[i + 1]
                 elif tok in ("-w", "--warehouses") and i + 1 < len(tokens):
                     warehouse = tokens[i + 1]
-                elif tok == "-g":
-                    use_gpu = True
-                elif tok.startswith("-g"):  # handle fused -gXXX (unlikely but safe)
-                    use_gpu = True
+                elif tok == "-g" and i + 1 < len(tokens):
+                    group_mode = tokens[i + 1]
             break
-    return bench_type, use_gpu, warehouse
+    return bench_type, group_mode, warehouse
 
 
 def parse_output(lines):
@@ -146,7 +144,7 @@ def main():
         sys.exit(1)
 
     # Auto-detect -b and -g from the 'Command:' log line
-    bench_type, use_group, warehouse = parse_cmdline_from_log(lines)
+    bench_type, group_mode, warehouse = parse_cmdline_from_log(lines)
 
     print(f"{'='*72}")
     print(f"{'EPIC Throughput Report':^72}")
@@ -157,7 +155,7 @@ def main():
     print(f"  Txns per epoch : {num_txns:,}")
     print(f"  Total epochs   : {len(epochs)}")
     print(f"  Total txns     : {num_txns * len(epochs):,}")
-    print(f"  Grouped        : {'Yes' if use_group else 'No'}")
+    print(f"  Grouped        : {group_mode}")
 
     # Per-epoch summary
     print(f"\n-- Per-Epoch Summary --")
