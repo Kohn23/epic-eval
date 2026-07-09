@@ -46,3 +46,5 @@ epic_profile/
 # temp files
 terminal
 
+# ncu-txt-logs
+docs/log/ncu*
