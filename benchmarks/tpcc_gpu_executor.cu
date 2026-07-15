@@ -291,7 +291,7 @@ union CachableTxnExecPlan
     OrderStatusTxnExecPlan os;
 } __attribute__((aligned(4)));
 
-static_assert(sizeof(CachableTxnExecPlan) + sizeof(CachableTxnParams) < 2500);
+static_assert(sizeof(CachableTxnExecPlan) + sizeof(CachableTxnParams) < 5000);
 
 template <typename GpuTxnArrayType>
 __global__ void gpuExecKernel(TpccRecords records, TpccVersions versions, GpuTxnArrayType txn, GpuTxnArrayType plan,

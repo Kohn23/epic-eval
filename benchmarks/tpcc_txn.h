@@ -22,7 +22,7 @@ enum class TpccTxnType : uint32_t
 
 struct FixedSizeTxn
 {
-    static constexpr size_t kMaxItems = 30;
+    static constexpr size_t kMaxItems = 60;
 };
 
 struct VariableSizeTxn
@@ -146,14 +146,14 @@ struct OrderStatusTxnParams
     uint32_t customer_id;
     uint32_t order_id;
     uint32_t num_items;
-    uint32_t orderline_ids[30];
+    uint32_t orderline_ids[60];
 };
 
 struct OrderStatusTxnExecPlan
 {
     uint32_t customer_loc;
     uint32_t order_loc;
-    uint32_t orderline_locs[30];
+    uint32_t orderline_locs[60];
 };
 
 struct DeliveryTxnInput
@@ -173,7 +173,7 @@ struct DeliveryTxnParams
     uint32_t new_order_id[10];
     uint32_t order_id[10];
     uint32_t customer_id[10];
-    uint32_t orderline_ids[10][30];
+    uint32_t orderline_ids[10][60];
     uint32_t num_items[10];
 };
 
@@ -184,8 +184,8 @@ struct DeliveryTxnExecPlan
     uint32_t order_write_locs[10];
     uint32_t customer_read_locs[10];
     uint32_t customer_write_locs[10];
-    uint32_t orderline_read_locs[10][30];
-    uint32_t orderline_write_locs[10][30];
+    uint32_t orderline_read_locs[10][60];
+    uint32_t orderline_write_locs[10][60];
 };
 
 struct StockLevelTxnInput

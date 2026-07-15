@@ -49,8 +49,8 @@ __device__ __forceinline__ void tpccPrepareInsertIndex(NewOrderTxnInput<FixedSiz
     OrderLineKey order_line_key;
     order_line_key.ol_o_id = o_id;
     order_line_key.ol_d_id = d_id;
-    uint32_t base = tid * 30;
-    for (uint32_t i = 0; i < 30; ++i)
+    uint32_t base = tid * 60;
+    for (uint32_t i = 0; i < 60; ++i)
     {
         if (i >= num_items)
         {
@@ -69,9 +69,9 @@ __device__ __forceinline__ void tpccPrepareInsertIndex(PaymentTxnInput *txn, Ord
 
     order_insert[tid] = static_cast<OrderKey::baseType>(-1);
     new_order_insert[tid] = static_cast<NewOrderKey::baseType>(-1);
-    for (uint32_t i = 0; i < 30; ++i)
+    for (uint32_t i = 0; i < 60; ++i)
     {
-        orderline_insert[tid * 30 + i] = static_cast<OrderLineKey::baseType>(-1);
+        orderline_insert[tid * 60 + i] = static_cast<OrderLineKey::baseType>(-1);
     }
 }
 
@@ -724,9 +724,9 @@ public:
         gpu_err_check(cudaMalloc(&d_new_order_insert, tpcc_config.num_txns * sizeof(NewOrderKey::baseType)));
         gpu_err_check(cudaMalloc(&d_new_order_valid_insert, tpcc_config.num_txns * sizeof(NewOrderKey::baseType)));
         dp_new_order_valid_insert = thrust::device_pointer_cast(d_new_order_valid_insert);
-        gpu_err_check(cudaMalloc(&d_order_line_insert, tpcc_config.num_txns * 30 * sizeof(OrderLineKey::baseType)));
+        gpu_err_check(cudaMalloc(&d_order_line_insert, tpcc_config.num_txns * 60 * sizeof(OrderLineKey::baseType)));
         gpu_err_check(
-            cudaMalloc(&d_order_line_valid_insert, tpcc_config.num_txns * 30 * sizeof(OrderLineKey::baseType)));
+            cudaMalloc(&d_order_line_valid_insert, tpcc_config.num_txns * 60 * sizeof(OrderLineKey::baseType)));
         dp_order_line_valid_insert = thrust::device_pointer_cast(d_order_line_valid_insert);
         gpu_err_check(cudaMalloc(&d_order_num_insert, sizeof(uint32_t)));
         gpu_err_check(cudaMalloc(&d_new_order_num_insert, sizeof(uint32_t)));
@@ -742,7 +742,7 @@ public:
         max_bytes = std::max(max_bytes, temp_storage_bytes);
 
         cub::DeviceSelect::If(d_temp_storage, temp_storage_bytes, d_order_line_insert, d_order_line_valid_insert,
-            d_order_line_num_insert, tpcc_config.num_txns * 30, DummyPredicate<OrderLineKey::baseType>());
+            d_order_line_num_insert, tpcc_config.num_txns * 60, DummyPredicate<OrderLineKey::baseType>());
         max_bytes = std::max(max_bytes, temp_storage_bytes);
 
         temp_storage_bytes = max_bytes;
@@ -1004,7 +1004,7 @@ public:
             d_new_order_num_insert, tpcc_config.num_txns,
             [] __device__(NewOrderKey::baseType val) { return val != static_cast<NewOrderKey::baseType>(-1); });
         cub::DeviceSelect::If(d_temp_storage, temp_storage_bytes, d_order_line_insert, d_order_line_valid_insert,
-            d_order_line_num_insert, tpcc_config.num_txns * 30,
+            d_order_line_num_insert, tpcc_config.num_txns * 60,
             [] __device__(OrderLineKey::baseType val) { return val != static_cast<OrderLineKey::baseType>(-1); });
 
         uint32_t num_orders_inserts, num_new_orders_inserts, num_order_lines_inserts;

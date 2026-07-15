@@ -222,10 +222,10 @@ static_assert(sizeof(OrderValue) <= 128);
 
 union OrderLineKey
 {
-    using baseType = ChooseBitfieldBaseType<10'000'000, 20, 2 * kMaxWarehouses, 30>::type;
+    using baseType = ChooseBitfieldBaseType<10'000'000, 20, 2 * kMaxWarehouses, 60>::type;
     struct
     {
-        baseType ol_number : ceilLog2(30);
+        baseType ol_number : ceilLog2(60);
         baseType ol_o_id : ceilLog2(10'000'000);
         baseType ol_d_id : ceilLog2(20);
         baseType ol_w_id : ceilLog2(2 * kMaxWarehouses);

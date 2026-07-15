@@ -96,7 +96,7 @@ struct TpccTxnGenerator
         , d_id_dist(1, 10)
         , c_id_dist(1023, 1, 3000)
         , i_id_dist(8191, 1, 100'000)
-        , num_item_dist(10, 30)
+        , num_item_dist(20, 60)
         , percentage_gen(1, 100)
         , order_quantity_dist(1, 10)
         , payment_amount_dist(1, 5000)

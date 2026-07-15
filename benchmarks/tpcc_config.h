@@ -9,6 +9,7 @@
 #include <cstdlib>
 
 #include "util_device_type.h"
+#include "tpcc_txn.h"
 
 namespace epic::tpcc {
 
@@ -76,7 +77,7 @@ struct TpccConfig
     }
     size_t orderLineTableSize() const
     {
-        return num_warehouses * 10 * 15 * 3000 + num_txns * (epochs + 1) * 15;
+        return num_warehouses * 10 * 15 * 3000 + num_txns * (epochs + 1) * FixedSizeTxn::kMaxItems;
     }
     size_t itemTableSize() const
     {
