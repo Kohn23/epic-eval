@@ -52,10 +52,10 @@ TpccDb::TpccDb(TpccConfig config)
         order_planner = std::make_shared<GpuTableExecutionPlanner>(
             "order", allocator, 0, 1, config.num_txns, config.orderTableSize());
         order_line_planner = std::make_shared<GpuTableExecutionPlanner>(
-            "order_line", allocator, 0, 15, config.num_txns, config.orderLineTableSize());
-        item_planner = std::make_shared<GpuTableExecutionPlanner>("item", allocator, 0, 15, config.num_txns, config.itemTableSize());
+            "order_line", allocator, 0, 30, config.num_txns, config.orderLineTableSize());
+        item_planner = std::make_shared<GpuTableExecutionPlanner>("item", allocator, 0, 30, config.num_txns, config.itemTableSize());
         stock_planner = std::make_shared<GpuTableExecutionPlanner>(
-            "stock", allocator, 0, 15 * 2, config.num_txns, config.stockTableSize());
+            "stock", allocator, 0, 30 * 2, config.num_txns, config.stockTableSize());
 
         warehouse_planner->Initialize();
         district_planner->Initialize();

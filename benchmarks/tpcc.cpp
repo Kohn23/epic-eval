@@ -86,11 +86,11 @@ TpccDb::TpccDb(TpccConfig config)
         order_planner = std::make_unique<GpuTableExecutionPlanner<TpccTxnExecPlanArrayT>>(
             "order", allocator, 0, 20, config.num_txns, config.num_warehouses * 10 * 3000, initialization_output);
         order_line_planner = std::make_unique<GpuTableExecutionPlanner<TpccTxnExecPlanArrayT>>("order_line", allocator,
-            0, 30, config.num_txns, config.num_warehouses * 10 * 3000 * 15, initialization_output);
+            0, 60, config.num_txns, config.num_warehouses * 10 * 3000 * 15, initialization_output);
         item_planner = std::make_unique<GpuTableExecutionPlanner<TpccTxnExecPlanArrayT>>(
-            "item", allocator, 0, 15, config.num_txns, 100'000, initialization_output);
+            "item", allocator, 0, 30, config.num_txns, 100'000, initialization_output);
         stock_planner = std::make_unique<GpuTableExecutionPlanner<TpccTxnExecPlanArrayT>>(
-            "stock", allocator, 0, 15 * 2, config.num_txns, 100'000 * config.num_warehouses, initialization_output);
+            "stock", allocator, 0, 30 * 2, config.num_txns, 100'000 * config.num_warehouses, initialization_output);
 
         warehouse_planner->Initialize();
         district_planner->Initialize();
@@ -192,20 +192,20 @@ TpccDb::TpccDb(TpccConfig config)
         versions.order_version = static_cast<Version<OrderValue> *>(allocator.Allocate(order_ver_size));
 
         size_t order_line_rec_size = sizeof(Record<OrderLineValue>) * config.orderLineTableSize();
-        size_t order_line_ver_size = sizeof(Version<OrderLineValue>) * config.num_txns * 15; /* TODO: not needed */
+        size_t order_line_ver_size = sizeof(Version<OrderLineValue>) * config.num_txns * 30; /* TODO: not needed */
         logger.Info("OrderLine record: {}, version: {}", formatSizeBytes(order_line_rec_size),
             formatSizeBytes(order_line_ver_size));
         records.order_line_record = static_cast<Record<OrderLineValue> *>(allocator.Allocate(order_line_rec_size));
         versions.order_line_version = static_cast<Version<OrderLineValue> *>(allocator.Allocate(order_line_ver_size));
 
         size_t item_rec_size = sizeof(Record<ItemValue>) * config.itemTableSize();
-        size_t item_ver_size = sizeof(Version<ItemValue>) * config.num_txns * 15; /* TODO: not needed */
+        size_t item_ver_size = sizeof(Version<ItemValue>) * config.num_txns * 30; /* TODO: not needed */
         logger.Info("Item record: {}, version: {}", formatSizeBytes(item_rec_size), formatSizeBytes(item_ver_size));
         records.item_record = static_cast<Record<ItemValue> *>(allocator.Allocate(item_rec_size));
         versions.item_version = static_cast<Version<ItemValue> *>(allocator.Allocate(item_ver_size));
 
         size_t stock_rec_size = sizeof(Record<StockValue>) * config.stockTableSize();
-        size_t stock_ver_size = sizeof(Version<StockValue>) * config.num_txns * 15;
+        size_t stock_ver_size = sizeof(Version<StockValue>) * config.num_txns * 30;
         logger.Info("Stock record: {}, version: {}", formatSizeBytes(stock_rec_size), formatSizeBytes(stock_ver_size));
         records.stock_record = static_cast<Record<StockValue> *>(allocator.Allocate(stock_rec_size));
         versions.stock_version = static_cast<Version<StockValue> *>(allocator.Allocate(stock_ver_size));
@@ -267,20 +267,20 @@ TpccDb::TpccDb(TpccConfig config)
         versions.order_version = static_cast<Version<OrderValue> *>(Malloc(order_ver_size));
 
         size_t order_line_rec_size = sizeof(Record<OrderLineValue>) * config.orderLineTableSize();
-        size_t order_line_ver_size = sizeof(Version<OrderLineValue>) * config.num_txns * 15; /* TODO: not needed */
+        size_t order_line_ver_size = sizeof(Version<OrderLineValue>) * config.num_txns * 30; /* TODO: not needed */
         logger.Info("OrderLine record: {}, version: {}", formatSizeBytes(order_line_rec_size),
                     formatSizeBytes(order_line_ver_size));
         records.order_line_record = static_cast<Record<OrderLineValue> *>(Malloc(order_line_rec_size));
         versions.order_line_version = static_cast<Version<OrderLineValue> *>(Malloc(order_line_ver_size));
 
         size_t item_rec_size = sizeof(Record<ItemValue>) * config.itemTableSize();
-        size_t item_ver_size = sizeof(Version<ItemValue>) * config.num_txns * 15; /* TODO: not needed */
+        size_t item_ver_size = sizeof(Version<ItemValue>) * config.num_txns * 30; /* TODO: not needed */
         logger.Info("Item record: {}, version: {}", formatSizeBytes(item_rec_size), formatSizeBytes(item_ver_size));
         records.item_record = static_cast<Record<ItemValue> *>(Malloc(item_rec_size));
         versions.item_version = static_cast<Version<ItemValue> *>(Malloc(item_ver_size));
 
         size_t stock_rec_size = sizeof(Record<StockValue>) * config.stockTableSize();
-        size_t stock_ver_size = sizeof(Version<StockValue>) * config.num_txns * 15;
+        size_t stock_ver_size = sizeof(Version<StockValue>) * config.num_txns * 30;
         logger.Info("Stock record: {}, version: {}", formatSizeBytes(stock_rec_size), formatSizeBytes(stock_ver_size));
         records.stock_record = static_cast<Record<StockValue> *>(Malloc(stock_rec_size));
         versions.stock_version = static_cast<Version<StockValue> *>(Malloc(stock_ver_size));
