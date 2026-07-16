@@ -223,6 +223,10 @@ run_ncu() {
         fname+="_$(clean_kernel_label "$ncu_kernel")"
     fi
     fname+="_${ncu_set:-full}"
+
+    local timestamp=$(date +"%Y%m%d_%H%M%S")
+    fname+="_${timestamp}"
+    
     local output="$PROFILE_DIR/$fname"
 
     echo "=== Nsight Compute (ncu) ==="
